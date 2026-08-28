@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "Satoshi-Variable"; src: url('C:/Users/isaac/Documents/GitHub/MUSA-5080-portfolio-template/fonts/Satoshi-Variable.ttf')
+}
+
 body {
-  font-family: Courier New, Sans-Serif;
+  font-family: satoshi, Sans-Serif;
 }
