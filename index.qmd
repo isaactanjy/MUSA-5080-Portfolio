@@ -1,5 +1,6 @@
 ---
 title: "Home"
+css: styles.css
 ---
 
 # Isaac Tan {#welcome}
