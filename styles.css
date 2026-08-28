@@ -56,3 +56,24 @@ h1, h2, h3 {
 .element {
   letter-spaceing: -0.5em
 }
+
+/* Unvisited link */
+a:link {
+  color: #ff9900;
+}
+
+/* Visited link */
+a:visited {
+  color: #800000;
+}
+
+/* Mouse over link */
+a:hover {
+  color: #e02222;
+}
+
+/* Selected/Active link */
+a:active {
+  color: #0099ff;
+}
+
