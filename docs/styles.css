@@ -1,7 +1,31 @@
 @font-face {
-  font-family: "Satoshi-Variable"; src: url('C:/Users/isaac/Documents/GitHub/MUSA-5080-portfolio-template/fonts/Satoshi-Variable.ttf')
+  font-family: 'Satoshi-Variable';
+  src: url('fonts/Satoshi-Variable.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "Satoshi-VariableItalic";
+  src: url('fonts/Satoshi-VariableItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "DMMono-Regular";
+  src: url('fonts/DMMono-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "DMSans-Variable";
+  src: url('fonts/DMSans-Variable.ttf') format('truetype');
 }
 
 body {
-  font-family: satoshi, Sans-Serif;
+  font-family: 'DMSans-Variable', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'DMMono-Regular', sans-serif;
+}
+
+.element {
+  letter-spaceing: -0.1em
 }
