@@ -28,6 +28,8 @@ format:
     toc: true
     code-fold: false
     code-tools: true
+    linkcolor: '#ff6600'
+    linkcolor-hover: '#800000'
 
 execute:
   freeze: auto
