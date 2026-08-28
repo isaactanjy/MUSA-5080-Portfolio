@@ -11,3 +11,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .dm-sans { font-family: "DM Sans", sans-serif; }
 .dm-mono { font-family: "DM Mono", monospace; }
+
+.element {
+  letter-spaceing: -0.1em
+}
