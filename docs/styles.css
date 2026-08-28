@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 
 body, p, li, td, .navbar, .sidebar {
   font-family: "DM Sans", sans-serif !important;
+  letter-spacing: -0.03em;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "DM Mono", monospace !important;
-  font-weight: 300 !important;
+  font-family: "Geist Mono", monospace !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em;
 }
 
 .dm-mono-light {
@@ -53,6 +58,16 @@ h1, h2, h3, h4, h5, h6 {
   font-style: normal;
 }
 
-.element {
-  letter-spaceing: -0.1em
+.fragment-mono-regular {
+  font-family: "Fragment Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
+
+.fragment-mono-regular-italic {
+  font-family: "Fragment Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+
