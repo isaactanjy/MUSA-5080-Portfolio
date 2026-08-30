@@ -18,19 +18,19 @@ website:
       - href: assignments/index.qmd
         text: "Assignments"
     right:
+      - icon: envelope-fill
+        href: mailto:isaactan@upenn.edu
       - icon: linkedin
-        href: www.linkedin.com/in/isaactanjy
-      - icon: instagram
-        href: https://www.instagram.com/zacs.snaps/
+        href: https://www.linkedin.com/in/isaactanjy
       - icon: github
         href: https://github.com/isaactanjy/MUSA-5080-portfolio
   page-footer:
     left: "Copyright 2026, Isaac Tan"
     right:
+      - icon: envelope-fill
+        href: mailto:isaactan@upenn.edu
       - icon: linkedin
-        href: www.linkedin.com/in/isaactanjy
-      - icon: instagram
-        href: https://www.instagram.com/zacs.snaps/
+        href: https://www.linkedin.com/in/isaactanjy
       - icon: github
         href: https://github.com/isaactanjy/MUSA-5080-portfolio
 
