@@ -24,7 +24,9 @@ website:
 format:
   html:
     css: /styles.css
-    theme: cosmo
+    theme:
+      light: cosmo
+      dark: [cosmo, theme-dark.scss]
     toc: true
     code-fold: false
     code-tools: true
