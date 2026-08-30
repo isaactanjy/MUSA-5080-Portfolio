@@ -26,7 +26,7 @@ format:
     css: /styles.css
     theme:
       light: cosmo
-      dark: [cosmo, theme-dark.scss]
+      dark: [solar, theme-dark.scss]
     toc: true
     code-fold: false
     code-tools: true
