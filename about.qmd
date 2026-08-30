@@ -4,10 +4,9 @@ title: "About Me"
 
 ## Background
 
-<!-- CHANGE THIS -->
 ::: {.clearfix}
 
-![Photo of Me](images/isaac2.jpg){.float-start .me-3 width="40%"}
+![Holding a binoculars](images/isaac2.jpg){.float-start .me-3 width="40%"}
 
 I am a student in the MUSA program at Penn. I have a background in Geography and GIS in Planning, and I am interested in communicating geographical spatial analysis for public use.
 
