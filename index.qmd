@@ -17,7 +17,9 @@ urban policy questions.
 
 ::: {.clearfix}
 ![Photo of Me](images/isaac.jpg){.float-start .me-3 width="40%"}
-I'm a student in the MUSA program at Penn. I have a background in Geography and GIS in Planning, and I'm interested in communicating geographical spatial analysis for public use.
+I am a student in the MUSA program at Penn. I have a background in Geography and GIS in Planning, and I am interested in communicating geographical spatial analysis for public use.
+
+I graduated from the University of Oxford with a BA Geography in 2026. During my undergraduate studies, I focused on both the theoretical concepts of human geography and the technical skills of quantitative GIS through the lens of transportation planning. 
 :::
 
 ## What You'll Find Here
@@ -30,5 +32,5 @@ I'm a student in the MUSA program at Penn. I have a background in Geography and 
 
 <!-- CHANGE THIS -->
 
-- Email: isaactan@upenn.edu
+- Email: [isaactan@upenn.edu](mailto:isaactan@upenn.edu)
 - GitHub: [@isaactanjy](https://github.com/isaactanjy)

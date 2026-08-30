@@ -35,11 +35,5 @@ sessionInfo()$R.version$version.string
 
 <!-- CHANGE THIS: 3-4 sentences -->
 
-What I want out of this course:
+What I want out of this course: To hone my analytic skills over spatial data
 
-One thing I'm nervous about:
-
-## Questions I Still Have
-
--
--
