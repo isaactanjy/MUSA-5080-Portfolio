@@ -18,8 +18,23 @@ website:
       - href: assignments/index.qmd
         text: "Assignments"
     right:
+      - icon: linkedin
+        href: www.linkedin.com/in/isaactanjy
+      - icon: instagram
+        href: https://www.instagram.com/zacs.snaps/
       - icon: github
-        href: https://github.com/isaactanjy/MUSA-5080-portfolio      # <-- CHANGE THIS
+        href: https://github.com/isaactanjy/MUSA-5080-portfolio
+  page-footer:
+    left: "Copyright 2026, Isaac Tan"
+    right:
+      - icon: linkedin
+        href: www.linkedin.com/in/isaactanjy
+      - icon: instagram
+        href: https://www.instagram.com/zacs.snaps/
+      - icon: github
+        href: https://github.com/isaactanjy/MUSA-5080-portfolio
+
+
 
 format:
   html:
