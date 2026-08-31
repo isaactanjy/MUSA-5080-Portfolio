@@ -45,6 +45,8 @@ format:
     toc: true
     code-fold: false
     code-tools: true
+    title-block-banner: images/banner.jpg
+    title-block-banner-color: "white"
 
 
 execute:
