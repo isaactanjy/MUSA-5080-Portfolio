@@ -42,6 +42,7 @@ format:
     theme:
       light: cosmo
       dark: [solar, theme-dark.scss]
+    respect-user-color-scheme: true
     toc: true
     code-fold: false
     code-tools: true
