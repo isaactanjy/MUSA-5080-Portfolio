@@ -2,6 +2,9 @@
 title: "Week 1: Getting Set Up"
 description: "First impressions, and getting the workflow running."
 date: 2026-08-28
+title-block-banner: images/note-banner.jpg
+title-block-banner-color: white
+format: html
 ---
 
 ## What We Did

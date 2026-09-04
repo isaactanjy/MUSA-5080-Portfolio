@@ -2,6 +2,9 @@
 title: "Week 2: Getting Ready"
 description: "Let's get the ball rolling."
 date: 2026-09-04
+title-block-banner: images/note-banner.jpg
+title-block-banner-color: white
+format: html
 ---
 
 ## Review of Last Week
@@ -64,6 +67,7 @@ This is an example of a callout with a title.
 
 This is an example of a 'folded' caution callout that can be expanded by the user. You can use `collapse="true"` to collapse it by default or `collapse="false"` to make a collapsible callout that is expanded by default.
 :::
+
 
 ## Key Concepts
 

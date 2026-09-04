@@ -8,6 +8,9 @@ listing:
   fields: [title, date, description]
   sort-ui: false
   filter-ui: false
+title-block-banner: images/weekly-note-banner.jpg
+title-block-banner-color: white
+format: html
 ---
 
 Notes from each week of MUSA 5080. New entries appear here automatically —

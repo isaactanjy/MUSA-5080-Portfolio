@@ -1,5 +1,8 @@
 ---
 title: "About Me"
+title-block-banner: images/about-banner.jpg
+title-block-banner-color: white
+format: html
 ---
 
 ## Background
