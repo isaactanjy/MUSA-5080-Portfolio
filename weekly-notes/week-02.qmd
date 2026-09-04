@@ -11,6 +11,10 @@ date: 2026-09-04
 2. Coding Anxiety
 3. Git & Workflow
 
+**The Core Idea**: We use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.
+
+>[!Tip] Things to Note
+> This is a test nest.
 
 ## What We Did
 

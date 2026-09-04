@@ -144,13 +144,13 @@
     "href": "weekly-notes/week-02.html",
     "title": "Week 2: Getting Ready",
     "section": "",
-    "text": "File Management\nCoding Anxiety\nGit & Workflow"
+    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nThe Core Idea: We use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\n[!Tip] Things to Note This is a test nest."
   },
   {
     "objectID": "weekly-notes/week-02.html#review-of-last-week",
     "href": "weekly-notes/week-02.html#review-of-last-week",
     "title": "Week 2: Getting Ready",
     "section": "",
-    "text": "File Management\nCoding Anxiety\nGit & Workflow"
+    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nThe Core Idea: We use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\n[!Tip] Things to Note This is a test nest."
   }
 ]
