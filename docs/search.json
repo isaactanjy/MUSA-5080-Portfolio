@@ -109,7 +109,7 @@
     "href": "weekly-notes/index.html",
     "title": "Weekly Notes",
     "section": "",
-    "text": "Notes from each week of MUSA 5080. New entries appear here automatically — add a .qmd file to this folder and render.\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Getting Ready\n\n\nLet’s get the ball rolling.\n\n\n\n\n\nSep 4, 2026\n\n\n\n\n\n\n\nWeek 1: Getting Set Up\n\n\nFirst impressions, and getting the workflow running.\n\n\n\n\n\nAug 28, 2026\n\n\n\n\n\nNo matching items"
+    "text": "Notes from each week of MUSA 5080. New entries appear here automatically — add a .qmd file to this folder and render.\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Getting Ready\n\n\nLet’s get the ball rolling.\n\n\n\n\n\nSep 4, 2026\n\n\n\n\n\n\n\nWeek 1: Getting Set Up\n\n\nFirst impressions, and getting the workflow running.\n\n\n\n\n\nAug 28, 2026\n\n\n\n\n\n\n\nWeek 3: Getting Set Up\n\n\nFirst impressions, and getting the workflow running.\n\n\n\n\n\nAug 28, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "data/readme.html",
@@ -144,40 +144,40 @@
     "href": "weekly-notes/week-02.html",
     "title": "Week 2: Getting Ready",
     "section": "",
-    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nWe use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\nThings to Note This is to test the nesting feature on .md\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto."
+    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nWe use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\nThings to Note\nThis is to test the nesting feature on .md\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto.\n\n\n\n\n\nWhat is the relationship between Quarto and R?\n\n\nQuarto is a separate package that calls on r to run code and then builds the document around the results.\n\n\nWhat is the difference in scope between _quarto.yml and the YAML header at the top of an individual .qmd file?\n\n\n_quarto.yml adjusts the global theme settings, while the YAML header adjusts the individual header controls.\n\n\nWhat does Git do?\n\n\nIt is a version tracker that runs locally on your computer, watching your folder for changes.\n\n\nWhat is the sequence of work?\n\n\nSave, Render, Commit, Push"
   },
   {
     "objectID": "weekly-notes/week-02.html#review-of-last-week",
     "href": "weekly-notes/week-02.html#review-of-last-week",
     "title": "Week 2: Getting Ready",
     "section": "",
-    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nWe use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\nThings to Note This is to test the nesting feature on .md\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto."
+    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nWe use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\nThings to Note\nThis is to test the nesting feature on .md\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto.\n\n\n\n\n\nWhat is the relationship between Quarto and R?\n\n\nQuarto is a separate package that calls on r to run code and then builds the document around the results.\n\n\nWhat is the difference in scope between _quarto.yml and the YAML header at the top of an individual .qmd file?\n\n\n_quarto.yml adjusts the global theme settings, while the YAML header adjusts the individual header controls.\n\n\nWhat does Git do?\n\n\nIt is a version tracker that runs locally on your computer, watching your folder for changes.\n\n\nWhat is the sequence of work?\n\n\nSave, Render, Commit, Push"
   },
   {
     "objectID": "weekly-notes/week-03.html",
     "href": "weekly-notes/week-03.html",
-    "title": "Week 3: Moving Forward",
+    "title": "Week 3: Getting Set Up",
     "section": "",
-    "text": "We tried out more R code"
+    "text": "Set up the portfolio workflow: made a repository from a template, cloned it with GitHub Desktop, edited files in RStudio, rendered with Quarto, and published to GitHub Pages."
   },
   {
     "objectID": "weekly-notes/week-03.html#what-we-did",
     "href": "weekly-notes/week-03.html#what-we-did",
-    "title": "Week 3: Moving Forward",
+    "title": "Week 3: Getting Set Up",
     "section": "",
-    "text": "We tried out more R code"
+    "text": "Set up the portfolio workflow: made a repository from a template, cloned it with GitHub Desktop, edited files in RStudio, rendered with Quarto, and published to GitHub Pages."
   },
   {
     "objectID": "weekly-notes/week-03.html#key-concepts",
     "href": "weekly-notes/week-03.html#key-concepts",
-    "title": "Week 3: Moving Forward",
+    "title": "Week 3: Getting Set Up",
     "section": "Key Concepts",
-    "text": "Key Concepts"
+    "text": "Key Concepts\nThree places a file can live:\n\nMy computer — where I edit\nGitHub.com — where it’s stored\nMy live site — what the world sees\n\nThe loop: Edit → Save → Render → Commit → Push → wait → refresh"
   },
   {
     "objectID": "weekly-notes/week-03.html#reflection",
     "href": "weekly-notes/week-03.html#reflection",
-    "title": "Week 3: Moving Forward",
+    "title": "Week 3: Getting Set Up",
     "section": "Reflection",
     "text": "Reflection\n\nWhat I want out of this course: To hone my analytic skills over spatial data"
   },
@@ -194,5 +194,12 @@
     "title": "Week 4: Getting Set Up",
     "section": "",
     "text": "This is a test nest Hello\n\n\n[!Tip] Does this render? Check if this renders"
+  },
+  {
+    "objectID": "weekly-notes/week-03.html#proving-r-works",
+    "href": "weekly-notes/week-03.html#proving-r-works",
+    "title": "Week 3: Getting Set Up",
+    "section": "Proving R Works",
+    "text": "Proving R Works\nThe chunk below runs when this page renders. If you can see a result underneath it on your published site, R and Quarto are talking to each other correctly.\n\nsessionInfo()$R.version$version.string\n\n[1] \"R version 4.6.1 (2026-06-24 ucrt)\""
   }
 ]
