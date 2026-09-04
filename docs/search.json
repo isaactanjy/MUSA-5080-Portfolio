@@ -123,14 +123,14 @@
     "href": "weekly-notes/week-02.html#what-we-did",
     "title": "Week 2: Getting Ready",
     "section": "What We Did",
-    "text": "What We Did\n\nLooking Into Themes\n\nFor theme changes, global changes are situated in the _quarto.yml page.\n\n\n\nMarkdown Syntax\n\nTo find out more about Quarto’s Markdown Syntax, visit here\n\n\n\n\n\n\n\nNote\n\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\nTipTip with Title\n\n\n\nThis is an example of a callout with a title.\n\n\n\n\n\n\n\n\nCautionExpand To Learn About Collapse\n\n\n\n\n\nThis is an example of a ‘folded’ caution callout that can be expanded by the user. You can use collapse=\"true\" to collapse it by default or collapse=\"false\" to make a collapsible callout that is expanded by default."
+    "text": "What We Did\n\nLooking Into Themes\n\nFor theme changes, global changes are situated in the _quarto.yml page.\n\n\n\nMarkdown Syntax\n\nTo find out more about Quarto’s Markdown Syntax, visit here. There are many things to explore.1\n\n\n\n\n\n\n\nNote\n\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\nTipTip with Title\n\n\n\nThis is an example of a callout with a title.\n\n\n\n\n\n\n\n\nCautionExpand To Learn About Collapse\n\n\n\n\n\nThis is an example of a ‘folded’ caution callout that can be expanded by the user. You can use collapse=\"true\" to collapse it by default or collapse=\"false\" to make a collapsible callout that is expanded by default."
   },
   {
     "objectID": "weekly-notes/week-02.html#key-concepts",
     "href": "weekly-notes/week-02.html#key-concepts",
     "title": "Week 2: Getting Ready",
     "section": "Key Concepts",
-    "text": "Key Concepts"
+    "text": "Key Concepts\n\nThings to Know about R\n\n\n\n\n\n\nTipA Note on The Console\n\n\n\nThe console is temporary. While it computes r script just fine, it will disappear once you close the console.\n\n\n\n\nObjects, Verbs, Census\n\n\n\n\n\n\nTipBreaking Down R Code\n\n\n\nresult &lt;- filter(counties, population &gt; 50000) # keep the big ones!\n\n\n\nresult - this is an object\n&lt;- - this can also be =, it is an assignment arrow\nfilter - this is a function\ncounties - this is input data\npopulation &gt; 50000 - this is an argument"
   },
   {
     "objectID": "weekly-notes/week-02.html#reflection",
@@ -156,28 +156,28 @@
   {
     "objectID": "weekly-notes/week-03.html",
     "href": "weekly-notes/week-03.html",
-    "title": "Week 3: Getting Ready",
+    "title": "Week 2: Getting Ready",
     "section": "",
     "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nWe use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\nThings to Note\nThis is to test the nesting feature on .md\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto.\n\n\n\n\n\nWhat is the relationship between Quarto and R?\n\n\nQuarto is a separate package that calls on r to run code and then builds the document around the results.\n\n\nWhat is the difference in scope between _quarto.yml and the YAML header at the top of an individual .qmd file?\n\n\n_quarto.yml adjusts the global theme settings, while the YAML header adjusts the individual header controls.\n\n\nWhat does Git do?\n\n\nIt is a version tracker that runs locally on your computer, watching your folder for changes.\n\n\nWhat is the sequence of work?\n\n\nSave, Render, Commit, Push"
   },
   {
     "objectID": "weekly-notes/week-03.html#what-we-did",
     "href": "weekly-notes/week-03.html#what-we-did",
-    "title": "Week 3: Getting Ready",
+    "title": "Week 2: Getting Ready",
     "section": "What We Did",
-    "text": "What We Did\n\nLooking Into Themes\n\nFor theme changes, global changes are situated in the _quarto.yml page.\n\n\n\nMarkdown Syntax\n\nTo find out more about Quarto’s Markdown Syntax, visit here\n\n\n\n\n\n\n\nNote\n\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\nTipTip with Title\n\n\n\nThis is an example of a callout with a title.\n\n\n\n\n\n\n\n\nCautionExpand To Learn About Collapse\n\n\n\n\n\nThis is an example of a ‘folded’ caution callout that can be expanded by the user. You can use collapse=\"true\" to collapse it by default or collapse=\"false\" to make a collapsible callout that is expanded by default."
+    "text": "What We Did\n\nLooking Into Themes\n\nFor theme changes, global changes are situated in the _quarto.yml page.\n\n\n\nMarkdown Syntax\n\nTo find out more about Quarto’s Markdown Syntax, visit here. There are many things to explore.1\n\n\n\n\n\n\n\nNote\n\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\nTipTip with Title\n\n\n\nThis is an example of a callout with a title.\n\n\n\n\n\n\n\n\nCautionExpand To Learn About Collapse\n\n\n\n\n\nThis is an example of a ‘folded’ caution callout that can be expanded by the user. You can use collapse=\"true\" to collapse it by default or collapse=\"false\" to make a collapsible callout that is expanded by default."
   },
   {
     "objectID": "weekly-notes/week-03.html#key-concepts",
     "href": "weekly-notes/week-03.html#key-concepts",
-    "title": "Week 3: Getting Ready",
+    "title": "Week 2: Getting Ready",
     "section": "Key Concepts",
-    "text": "Key Concepts"
+    "text": "Key Concepts\n\nThings to Know about R\n\n\n\n\n\n\nTipA Note on The Console\n\n\n\nThe console is temporary. While it computes r script just fine, it will disappear once you close the console.\n\n\n\n\nObjects, Verbs, Census\n\n\n\n\n\n\nTipBreaking Down r Code\n\n\n\nresult &lt;- filter(counties, population &gt; 50000) # keep the big ones!\nresult - this is an object &lt;- - this can also be =, it is an assignment arrow filter - this is a function counties - this is input data population &gt; 50000 - this is an argument"
   },
   {
     "objectID": "weekly-notes/week-03.html#reflection",
     "href": "weekly-notes/week-03.html#reflection",
-    "title": "Week 3: Getting Ready",
+    "title": "Week 2: Getting Ready",
     "section": "Reflection",
     "text": "Reflection"
   },
@@ -205,8 +205,22 @@
   {
     "objectID": "weekly-notes/week-03.html#review-of-last-week",
     "href": "weekly-notes/week-03.html#review-of-last-week",
-    "title": "Week 3: Getting Ready",
+    "title": "Week 2: Getting Ready",
     "section": "",
     "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nWe use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\nThings to Note\nThis is to test the nesting feature on .md\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto.\n\n\n\n\n\nWhat is the relationship between Quarto and R?\n\n\nQuarto is a separate package that calls on r to run code and then builds the document around the results.\n\n\nWhat is the difference in scope between _quarto.yml and the YAML header at the top of an individual .qmd file?\n\n\n_quarto.yml adjusts the global theme settings, while the YAML header adjusts the individual header controls.\n\n\nWhat does Git do?\n\n\nIt is a version tracker that runs locally on your computer, watching your folder for changes.\n\n\nWhat is the sequence of work?\n\n\nSave, Render, Commit, Push"
+  },
+  {
+    "objectID": "weekly-notes/week-02.html#footnotes",
+    "href": "weekly-notes/week-02.html#footnotes",
+    "title": "Week 2: Getting Ready",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis is a test of an inline note!↩︎"
+  },
+  {
+    "objectID": "weekly-notes/week-03.html#footnotes",
+    "href": "weekly-notes/week-03.html#footnotes",
+    "title": "Week 2: Getting Ready",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis is a test of an inline note!↩︎"
   }
 ]

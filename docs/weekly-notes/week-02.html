@@ -412,7 +412,11 @@ background-size: cover;
   <li><a href="#looking-into-themes" id="toc-looking-into-themes" class="nav-link" data-scroll-target="#looking-into-themes">Looking Into Themes</a></li>
   <li><a href="#markdown-syntax" id="toc-markdown-syntax" class="nav-link" data-scroll-target="#markdown-syntax">Markdown Syntax</a></li>
   </ul></li>
-  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a></li>
+  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a>
+  <ul class="collapse">
+  <li><a href="#things-to-know-about-r" id="toc-things-to-know-about-r" class="nav-link" data-scroll-target="#things-to-know-about-r">Things to Know about R</a></li>
+  <li><a href="#objects-verbs-census" id="toc-objects-verbs-census" class="nav-link" data-scroll-target="#objects-verbs-census">Objects, Verbs, Census</a></li>
+  </ul></li>
   <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection">Reflection</a></li>
   </ul>
 </nav>
@@ -483,7 +487,7 @@ background-size: cover;
 <section id="markdown-syntax" class="level3">
 <h3 class="anchored" data-anchor-id="markdown-syntax">Markdown Syntax</h3>
 <blockquote class="blockquote">
-<p>To find out more about Quarto’s Markdown Syntax, visit <a href="https://quarto.org/docs/authoring/markdown-basics.html">here</a></p>
+<p>To find out more about Quarto’s Markdown Syntax, visit <a href="https://quarto.org/docs/authoring/markdown-basics.html">here</a>. There are many things to explore.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </blockquote>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -531,6 +535,45 @@ Note
 </section>
 <section id="key-concepts" class="level2">
 <h2 class="anchored" data-anchor-id="key-concepts">Key Concepts</h2>
+<section id="things-to-know-about-r" class="level3">
+<h3 class="anchored" data-anchor-id="things-to-know-about-r">Things to Know about R</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>A Note on The Console
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The console is temporary. While it computes <code>r</code> script just fine, it will disappear once you close the console.</p>
+</div>
+</div>
+</section>
+<section id="objects-verbs-census" class="level3">
+<h3 class="anchored" data-anchor-id="objects-verbs-census">Objects, Verbs, Census</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Breaking Down R Code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>result &lt;- filter(counties, population &gt; 50000) # keep the big ones!</code></p>
+</div>
+</div>
+<ol type="1">
+<li><code>result</code> - this is an <code>object</code></li>
+<li><code>&lt;-</code> - this can also be <code>=</code>, it is an <code>assignment arrow</code></li>
+<li><code>filter</code> - this is a <code>function</code></li>
+<li><code>counties</code> - this is <code>input data</code></li>
+<li><code>population &gt; 50000</code> - this is an <code>argument</code></li>
+</ol>
+</section>
 </section>
 <section id="reflection" class="level2">
 <h2 class="anchored" data-anchor-id="reflection">Reflection</h2>
@@ -540,7 +583,13 @@ Note
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>This is a test of an inline note!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -1056,7 +1105,7 @@ Note
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="fu">### Markdown Syntax</span></span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; To find out more about Quarto's Markdown Syntax, visit </span><span class="co">[</span><span class="ot">here</span><span class="co">](https://quarto.org/docs/authoring/markdown-basics.html)</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; To find out more about Quarto's Markdown Syntax, visit </span><span class="co">[</span><span class="ot">here</span><span class="co">](https://quarto.org/docs/authoring/markdown-basics.html)</span><span class="at">. There are many things to explore.^</span><span class="co">[</span><span class="ot">This is a test of an inline note!</span><span class="co">]</span></span>
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
 <span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>Note that there are five types of callouts, including:</span>
@@ -1078,8 +1127,40 @@ Note
 <span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## Key Concepts</span></span>
 <span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reflection</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="fu">### Things to Know about R</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="fu">## A Note on The Console</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>The console is temporary. While it computes <span class="in">`r`</span> script just fine, it will disappear once you close the console.</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="fu">### Objects, Verbs, Census</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="false"}</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="fu">## Breaking Down R Code</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="in">` result &lt;- filter(counties, population &gt; 50000) # keep the big ones!`</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="in">`result`</span> - this is an <span class="in">`object`</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span><span class="in">`&lt;-`</span> - this can also be <span class="in">`=`</span>, it is an <span class="in">`assignment arrow`</span></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span><span class="in">`filter`</span> - this is a <span class="in">`function`</span></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span><span class="in">`counties`</span> - this is <span class="in">`input data`</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span><span class="in">`population &gt; 50000`</span> - this is an <span class="in">`argument`</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="false"}</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## Packages</span></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>Packages are things that can be installed and called upon when you are running your code</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>`install.packages("dplyr") - this only needs to be done once</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span><span class="in">`library(dplyr) - this is like a book. You need to run this every time you use `</span>r`</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reflection</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

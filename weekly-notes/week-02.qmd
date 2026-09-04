@@ -49,7 +49,7 @@ Markdown is a file format that we will use to write explanations and narrative n
 
 ### Markdown Syntax
 
-> To find out more about Quarto's Markdown Syntax, visit [here](https://quarto.org/docs/authoring/markdown-basics.html)
+> To find out more about Quarto's Markdown Syntax, visit [here](https://quarto.org/docs/authoring/markdown-basics.html). There are many things to explore.^[This is a test of an inline note!]
 
 ::: {.callout-note}
 Note that there are five types of callouts, including:
@@ -71,6 +71,38 @@ This is an example of a 'folded' caution callout that can be expanded by the use
 
 ## Key Concepts
 
+### Things to Know about R
+
+::: {.callout-tip}
+## A Note on The Console
+
+The console is temporary. While it computes `r` script just fine, it will disappear once you close the console.
+:::
+
+### Objects, Verbs, Census
+
+::: {.callout-tip collapse="false"}
+## Breaking Down R Code
+
+` result <- filter(counties, population > 50000) # keep the big ones!`
+:::
+
+
+1. `result` - this is an `object`
+2. `<-` - this can also be `=`, it is an `assignment arrow`
+3. `filter` - this is a `function`
+4. `counties` - this is `input data`
+5. `population > 50000` - this is an `argument`
+
+::: {.callout-tip collapse="false"}
+## Packages
+
+Packages are things that can be installed and called upon when you are running your code
+
+:::
+
+1. `install.packages("dplyr") - this only needs to be done once
+2. `library(dplyr) - this is like a book. You need to run this every time you use `r`
 
 ## Reflection
 
