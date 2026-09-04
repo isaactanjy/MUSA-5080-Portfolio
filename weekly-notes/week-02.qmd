@@ -40,6 +40,30 @@ Markdown is a file format that we will use to write explanations and narrative n
 
 ## What We Did
 
+### Looking Into Themes
+
+> For theme changes, global changes are situated in the `_quarto.yml` page.
+
+### Markdown Syntax
+
+> To find out more about Quarto's Markdown Syntax, visit [here](https://quarto.org/docs/authoring/markdown-basics.html)
+
+::: {.callout-note}
+Note that there are five types of callouts, including:
+`note`, `warning`, `important`, `tip`, and `caution`.
+:::
+
+::: {.callout-tip}
+## Tip with Title
+
+This is an example of a callout with a title.
+:::
+
+::: {.callout-caution collapse="true"}
+## Expand To Learn About Collapse
+
+This is an example of a 'folded' caution callout that can be expanded by the user. You can use `collapse="true"` to collapse it by default or `collapse="false"` to make a collapsible callout that is expanded by default.
+:::
 
 ## Key Concepts
 
