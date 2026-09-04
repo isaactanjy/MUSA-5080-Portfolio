@@ -13,11 +13,11 @@ date: 2026-09-04
 
 **The Core Idea**: We use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.
 
-> Things to Note
-> This is a test nest.
+#### Things to Note
+This is a test nest.
 
-> What is Markdown?
-> Markdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto.
+#### What is Markdown?
+Markdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto. 
 
 ## What We Did
 
