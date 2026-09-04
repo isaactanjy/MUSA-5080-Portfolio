@@ -144,13 +144,55 @@
     "href": "weekly-notes/week-02.html",
     "title": "Week 2: Getting Ready",
     "section": "",
-    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nThe Core Idea: We use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\n\nThis is a test nest.\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto."
+    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nWe use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\nThings to Note This is to test the nesting feature on .md\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto."
   },
   {
     "objectID": "weekly-notes/week-02.html#review-of-last-week",
     "href": "weekly-notes/week-02.html#review-of-last-week",
     "title": "Week 2: Getting Ready",
     "section": "",
-    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nThe Core Idea: We use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\n\nThis is a test nest.\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto."
+    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nWe use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\nThings to Note This is to test the nesting feature on .md\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto."
+  },
+  {
+    "objectID": "weekly-notes/week-03.html",
+    "href": "weekly-notes/week-03.html",
+    "title": "Week 3: Moving Forward",
+    "section": "",
+    "text": "We tried out more R code"
+  },
+  {
+    "objectID": "weekly-notes/week-03.html#what-we-did",
+    "href": "weekly-notes/week-03.html#what-we-did",
+    "title": "Week 3: Moving Forward",
+    "section": "",
+    "text": "We tried out more R code"
+  },
+  {
+    "objectID": "weekly-notes/week-03.html#key-concepts",
+    "href": "weekly-notes/week-03.html#key-concepts",
+    "title": "Week 3: Moving Forward",
+    "section": "Key Concepts",
+    "text": "Key Concepts"
+  },
+  {
+    "objectID": "weekly-notes/week-03.html#reflection",
+    "href": "weekly-notes/week-03.html#reflection",
+    "title": "Week 3: Moving Forward",
+    "section": "Reflection",
+    "text": "Reflection\n\nWhat I want out of this course: To hone my analytic skills over spatial data"
+  },
+  {
+    "objectID": "weekly-notes/week-04.html",
+    "href": "weekly-notes/week-04.html",
+    "title": "Week 4: Getting Set Up",
+    "section": "",
+    "text": "This is a test nest Hello\n\n\n[!Tip] Does this render? Check if this renders"
+  },
+  {
+    "objectID": "weekly-notes/week-04.html#what-we-did",
+    "href": "weekly-notes/week-04.html#what-we-did",
+    "title": "Week 4: Getting Set Up",
+    "section": "",
+    "text": "This is a test nest Hello\n\n\n[!Tip] Does this render? Check if this renders"
   }
 ]
