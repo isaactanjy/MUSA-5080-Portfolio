@@ -113,6 +113,7 @@ Packages are things that can be installed and called upon when you are running y
 | 1    | 1      | 1   |
 
 1.  Note: `tibble` is nicer and prints prettier
+2.  Note\[2\]: MOE stands for Margin of Error
 
 ### Verbs
 
