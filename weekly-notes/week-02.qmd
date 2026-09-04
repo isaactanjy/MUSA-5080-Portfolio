@@ -20,6 +20,24 @@ We use R for the statistical analysis, and Quarto is used to run the code and we
 #### What is Markdown?
 Markdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto. 
 
+### Quiz Review
+
+1. What is the relationship between Quarto and R?
+
+> Quarto is a separate package that calls on r to run code and then builds the document around the results.
+
+2. What is the difference in scope between _quarto.yml and the YAML header at the top of an individual .qmd file?
+
+> _quarto.yml adjusts the global theme settings, while the YAML header adjusts the individual header controls.
+
+3. What does Git do?
+
+> It is a version tracker that runs locally on your computer, watching your folder for changes.
+
+4. What is the sequence of work?
+
+> Save, Render, Commit, Push
+
 ## What We Did
 
 
