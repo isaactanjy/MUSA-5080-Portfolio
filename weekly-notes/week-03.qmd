@@ -1,0 +1,119 @@
+---
+title: "Week 2: Getting Ready"
+description: "Let's get the ball rolling."
+date: 2026-09-11
+title-block-banner: images/note-banner.jpg
+title-block-banner-color: white
+format: html
+---
+
+## Review of Last Week
+
+### Questions From the Class
+1. File Management
+2. Coding Anxiety
+3. Git & Workflow
+
+We use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.
+
+> **Things to Note**
+>
+> This is to test the nesting feature on .md
+
+#### What is Markdown?
+Markdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto. 
+
+### Quiz Review
+
+1. What is the relationship between Quarto and R?
+
+> Quarto is a separate package that calls on r to run code and then builds the document around the results.
+
+2. What is the difference in scope between _quarto.yml and the YAML header at the top of an individual .qmd file?
+
+> _quarto.yml adjusts the global theme settings, while the YAML header adjusts the individual header controls.
+
+3. What does Git do?
+
+> It is a version tracker that runs locally on your computer, watching your folder for changes.
+
+4. What is the sequence of work?
+
+> Save, Render, Commit, Push
+
+## What We Did
+
+### Looking Into Themes
+
+> For theme changes, global changes are situated in the `_quarto.yml` page.
+
+### Markdown Syntax
+
+> To find out more about Quarto's Markdown Syntax, visit [here](https://quarto.org/docs/authoring/markdown-basics.html). There are many things to explore.^[This is a test of an inline note!]
+
+::: {.callout-note}
+Note that there are five types of callouts, including:
+`note`, `warning`, `important`, `tip`, and `caution`.
+:::
+
+::: {.callout-tip}
+## Tip with Title
+
+This is an example of a callout with a title.
+:::
+
+::: {.callout-caution collapse="true"}
+## Expand To Learn About Collapse
+
+This is an example of a 'folded' caution callout that can be expanded by the user. You can use `collapse="true"` to collapse it by default or `collapse="false"` to make a collapsible callout that is expanded by default.
+:::
+
+
+## Key Concepts
+
+### Things to Know about R
+
+::: {.callout-tip}
+## A Note on The Console
+
+The console is temporary. While it computes `r` script just fine, it will disappear once you close the console.
+:::
+
+### Objects, Verbs, Census
+
+::: {.callout-tip collapse="false"}
+## Breaking Down R Code
+
+` result <- filter(counties, population > 50000) # keep the big ones!`
+:::
+
+
+1. `result` - this is an `object`
+2. `<-` - this can also be `=`, it is an `assignment arrow`
+3. `filter` - this is a `function`
+4. `counties` - this is `input data`
+5. `population > 50000` - this is an `argument`
+
+::: {.callout-tip collapse="false"}
+## Packages
+
+Packages are things that can be installed and called upon when you are running your code
+
+:::
+
+1. `install.packages("dplyr") - this only needs to be done once
+2. `library(dplyr) - this is like a book. You need to run this every time you use `r`
+
+### Data Frames
+
+| Name | Income | MOE | 
+|:-----|:-----|:-----|
+|   12  |  12  |    12   | 
+|  123  |  123 |   123   |  
+|    1  |    1 |     1   | 
+
+
+1. Note: `tibble` is nicer and prints prettier
+
+## Reflection
+
