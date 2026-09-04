@@ -13,7 +13,8 @@ date: 2026-09-04
 
 We use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.
 
-> Things to Note
+> **Things to Note**
+>
 > This is to test the nesting feature on .md
 
 #### What is Markdown?

@@ -144,14 +144,14 @@
     "href": "weekly-notes/week-02.html",
     "title": "Week 2: Getting Ready",
     "section": "",
-    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nWe use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\nThings to Note This is to test the nesting feature on .md\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto."
+    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nWe use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\nThings to Note\nThis is to test the nesting feature on .md\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto."
   },
   {
     "objectID": "weekly-notes/week-02.html#review-of-last-week",
     "href": "weekly-notes/week-02.html#review-of-last-week",
     "title": "Week 2: Getting Ready",
     "section": "",
-    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nWe use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\nThings to Note This is to test the nesting feature on .md\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto."
+    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nWe use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\nThings to Note\nThis is to test the nesting feature on .md\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto."
   },
   {
     "objectID": "weekly-notes/week-03.html",
