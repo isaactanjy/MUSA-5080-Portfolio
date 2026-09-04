@@ -1,0 +1,23 @@
+---
+title: "Week 2: Getting Ready"
+description: "Let's get the ball rolling."
+date: 2026-09-04
+---
+
+## Review of Last Week
+
+### Questions From the Class
+1. File Management
+2. Coding Anxiety
+3. Git & Workflow
+
+
+## What We Did
+
+
+
+## Key Concepts
+
+
+## Reflection
+
