@@ -48,6 +48,7 @@ format:
     code-tools: true
     title-block-banner: images/banner.jpg
     title-block-banner-color: "white"
+    smooth-scroll: true
 
 
 execute:
