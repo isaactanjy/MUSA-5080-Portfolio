@@ -1,0 +1,13 @@
+---
+title: "Week 3: Working with the Census"
+description: "Getting to know the Census"
+date: 2026-09-11
+title-block-banner: images/note-banner.jpg
+title-block-banner-color: white
+format: html
+---
+
+## Review of Last Week
+
+
+## Reflection
