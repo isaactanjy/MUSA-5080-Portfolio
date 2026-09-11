@@ -1,0 +1,273 @@
+---
+title: "Week 3: Learning ggplot & MOE"
+description: "Deep Dive into Understanding and Visualizing the MOE"
+date: 2026-09-11
+title-block-banner: images/note-banner.jpg
+title-block-banner-color: white
+format: html
+---
+
+## Overview of Lecture
+
+1.  datavi3 - How to build a ggplot
+2.  More info on MOEs (Including Change Over Time)
+3.  Running through W3 R code
+
+## Ansombe's Quartet
+
+::: callout-tip
+These four graphs have the same mean (x and y), correlation, and regression line, but they look very different.
+:::
+
+## Plots
+
+::: {.callout-tip collapse="false"}
+In data science, mapping refers to a very different thing from cartographical maps. A plot is mapping from **columns** in your data to visual properties on your page. This is known as the "Grammar of Graphics" aka "gg"
+:::
+
+### For Example
+
+| Your Data (Example Variables) | Page (Canvas)      |
+|-------------------------------|--------------------|
+| Estimate                      | Position on y-axis |
+| Population                    | Position on x-axis |
+| Reliability                   | Color              |
+| MOE                           | Size               |
+
+The variables on the left are represented by the visualizations on the right.
+
+## Using ggplot
+
+### 1. Setting Up
+
+``` r
+ggplot(data) # creates a plot from the dataframe 'data'
+ggplot() # creates an empty plot for you to fill later
+```
+
+### 2. Aesthetic Mappings
+
+::: callout-warning
+Note: This is not where you decorate (contrary to the naming convention). This only tells the ggplot the factual information about where the columns will go on the plot
+:::
+
+``` r
+aes()
+```
+
+### 3. The Shape & Type of Chart
+
+``` r
+geom_() # example geom_point(). Stands for 'geometry'
+```
+
+### Example Code
+
+``` r
+ggplot(tract_data) +
+  aes(x = population, y = moe_pct) +
+  geom_point()
+```
+
+### Things to Take Note
+
+``` r
+ggplot(county_data) +
+  aes(x=estimate, y=population, color="blue") +
+  geom_point()
+
+## NOTE: This will output RED points. Why? Because that is the default color ggplot likes to pick. By putting color in the aes(), it is looking for a column called 'color' that it thinks has data relevant to the plot
+
+## What you should do
+
+ggplot(county_data) +
+  aes(x=estimate, y=population) +
+  geom_point(color = "purple") # This will work properly
+```
+
+| Inside aes()             | Not Inside aes()   |
+|--------------------------|--------------------|
+| aes(Color = reliability) | geom_point("blue") |
+|                          | Decorations        |
+
+### 4. Geometry Options
+
++---------------------------------+---------------------+
+| What I Want to Know             | GEOM                |
++=================================+=====================+
+| How a variable is spread?       | ``` r               |
+|                                 | geom_histogram()    |
+|                                 | ```                 |
++---------------------------------+---------------------+
+| How do two variables relate?    | ``` r               |
+|                                 | geom_point()        |
+|                                 | ```                 |
++---------------------------------+---------------------+
+| How do groups compare?          | ``` r               |
+|                                 | geom_boxplot() # or |
+|                                 | geom_col()          |
+|                                 | ```                 |
++---------------------------------+---------------------+
+| How do things change over time? | ``` r               |
+|                                 | geom_line()         |
+|                                 | ```                 |
++---------------------------------+---------------------+
+| How uncertain is a value?       | ``` r               |
+|                                 | geom_errorbar()     |
+|                                 | ```                 |
++---------------------------------+---------------------+
+
+::: callout-tip
+If you want to be more advanced, you can combine different geometries into the same plot
+:::
+
+### 5. Error Bars (Example)
+
+``` r
+county_data %>%
+  ggplot(aes(x = NAME, y = estimate)) +
+  geom_col() +
+  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe)) # errorbars have an upper and lower limit (how big you should make the error bars)
+```
+
+However, this plot has a lot of problems.
+
+1.  The names at the bottom are jumbled together
+2.  We have scientific notation (r defaults to this)
+3.  Default grid in the background
+4.  Data is out of order (so you can't read anything)
+5.  Contrast is low
+6.  Too much data
+
+#### Fixing the Plot
+
+``` r
+# let's make it less horrible
+# reduce to 15 most unreliable.
+
+county_data %>%
+  arrange(desc(moe_pct)) %>% # sort data from highest to lowest)
+  slice_head(n = 15) %>% # now that it has been ordered, we are taking a slice from that head (15 of them). Then, this is being passed down to the ggplot
+  ggplot(aes(x = NAME, y = estimate)) +
+  geom_col() +
+  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe)) # this remains the same
+
+## Flip to make names more readable:
+county_data %>%
+  arrange(desc(moe_pct)) %>%
+  slice_head(n = 15) %>%
+  ggplot(aes(x = NAME, y = estimate)) +
+  geom_col() +
+  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe)) +
+  coord_flip() # flipping 
+
+## Sort bars by bar length rather than alphabetically:
+county_data %>%
+  arrange(desc(moe_pct)) %>%
+  slice_head(n = 15) %>%
+  ggplot(aes(x = reorder(NAME, estimate), y = estimate)) + # reorder the x column 
+  geom_col() +
+  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe)) +
+  coord_flip()
+
+## Remove "County, New York"
+
+county_data %>%
+  arrange(desc(moe_pct)) %>%
+  mutate(NAME = str_remove(NAME, " County, New York")) %>%
+  slice_head(n = 15) %>%
+  ggplot(aes(x = reorder(NAME, estimate), y = estimate)) +
+  geom_col() +
+  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe)) +
+  coord_flip()
+
+#change to narrower width of the error bars
+
+county_data %>%
+  arrange(desc(moe_pct)) %>%
+  mutate(NAME = str_remove(NAME, " County, New York")) %>% # mutates the name column in the df to remove the specified string. Since you are specifying NAME, you are just modifying the df instead. As this is run within this plot, it doesn't change the actual df
+  slice_head(n = 15) %>%
+  ggplot(aes(x = reorder(NAME, estimate), y = estimate)) +
+  geom_col() +
+  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe), width = 0.3) +
+  coord_flip()
+
+# tidy up with a nice theme:
+county_data %>%
+  arrange(desc(moe_pct)) %>%
+  mutate(NAME = str_remove(NAME, " County, New York")) %>%
+  slice_head(n = 15) %>%
+  ggplot(aes(x = reorder(NAME, estimate), y = estimate)) +
+  geom_col(fill = "steelblue") +
+  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe), width = 0.3) +
+  coord_flip() +
+  theme_minimal()
+
+# fix labels and numbers:
+
+county_data %>%
+  arrange(desc(moe_pct)) %>%
+  mutate(NAME = str_remove(NAME, " County, New York")) %>%
+  slice_head(n = 15) %>%
+  ggplot(aes(x = reorder(NAME, estimate), y = estimate)) +
+  geom_col(fill = "steelblue") +
+  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe), width = 0.3) +
+  coord_flip() +
+  theme_minimal() +
+  scale_y_continuous(labels = scales::comma) +
+  labs(
+    title = "Counties with the largest margins of error",
+    subtitle = "People below 100% of the poverty level, ACS 2023 5-year estimates",
+    x = NULL,
+    y = "Population below poverty level"
+  )
+```
+
+### Coefficient of Variation (CV)
+
+1.  Relative measure of sampling error
+2.  $$\frac{\text{standard error}}{\text{estimate}} * 100$$
+
+| CV Threshold | Reliability                                           |
+|--------------|-------------------------------------------------------|
+| Low CV       | 15% -\> High Reliability                              |
+| Medium CV    | 15-30%                                                |
+| High CV      | 30% or more -\> Low Reliability (High Sampling Error) |
+
+### Derived Uncertainty
+
+$$\text{poverty rate} = \frac{\text{number in poverty}\pm moe}{\text{total population} \pm moe}$$
+
+``` r
+moe.sum() # adding esitmates together
+moe.prop() # one estimate as a share of another
+moe.ratio() # two completely different calculations. eg. ratio of people in poverty / household income. One is NOT a subset of the other
+```
+
+### Looking back at the ACS
+
+1.  It measures change over time. Note the *overlapping intervals.* Eg. When you are asking it for 2023 data, it covers 2019-2023. When you are asking it for 2022 data, it covers 2018-2022.
+2.  If you are studying change over time, you want non-overlapping intervals. Eg. 2014-2018 and 2019 to 2023. *However, you must note that their MOEs will likely be different*
+
+#### Working with an Example
+
+1.  Let's say we have two ACS datasets
+    1.  2014 - 2018: \$45,000 with a MOE of 8,000
+    2.  2019 - 2023: \$62,000 with a MOE of 11,000
+2.  We need to get into the maths of the *Standard Error of Difference*
+
+$$SE_{diff} = \sqrt{{SE_1}^2 + {SE_2}^2}$$
+$$Z = (\text{est}_1 - \text{est}_2)$$
+
+3.  In this case, when we fill in the numbers:
+
+$$SE_{diff} = \sqrt{{\frac{8000}{1.645}}^2 + {\frac{11000}{1.645}}^2}$$
+
+## Homework
+
+::: {.callout-tip}
+Note on homework: Due in two weeks. Make sure you upload the link on canvas and follow the code given in the lecture. Work on making nice looking outputs.
+:::
+
+1.  To tidy up your code, the html instructions have a good overview of that
+2.  Provide a link to your github that would have your quarto document inside for checking
