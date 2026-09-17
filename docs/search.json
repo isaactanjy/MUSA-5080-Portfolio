@@ -1,47 +1,5 @@
 [
   {
-    "objectID": "weekly-notes/week-03.html",
-    "href": "weekly-notes/week-03.html",
-    "title": "Week 3: Learning ggplot & MOE",
-    "section": "",
-    "text": "datavi3 - How to build a ggplot\nMore info on MOEs (Including Change Over Time)\nRunning through W3 R code"
-  },
-  {
-    "objectID": "weekly-notes/week-03.html#overview-of-lecture",
-    "href": "weekly-notes/week-03.html#overview-of-lecture",
-    "title": "Week 3: Learning ggplot & MOE",
-    "section": "",
-    "text": "datavi3 - How to build a ggplot\nMore info on MOEs (Including Change Over Time)\nRunning through W3 R code"
-  },
-  {
-    "objectID": "weekly-notes/week-03.html#ansombes-quartet",
-    "href": "weekly-notes/week-03.html#ansombes-quartet",
-    "title": "Week 3: Learning ggplot & MOE",
-    "section": "Ansombe’s Quartet",
-    "text": "Ansombe’s Quartet\n\n\n\n\n\n\nTip\n\n\n\nThese four graphs have the same mean (x and y), correlation, and regression line, but they look very different."
-  },
-  {
-    "objectID": "weekly-notes/week-03.html#plots",
-    "href": "weekly-notes/week-03.html#plots",
-    "title": "Week 3: Learning ggplot & MOE",
-    "section": "Plots",
-    "text": "Plots\n\n\n\n\n\n\nTip\n\n\n\n\n\nIn data science, mapping refers to a very different thing from cartographical maps. A plot is mapping from columns in your data to visual properties on your page. This is known as the “Grammar of Graphics” aka “gg”\n\n\n\n\nFor Example\n\n\n\nYour Data (Example Variables)\nPage (Canvas)\n\n\n\n\nEstimate\nPosition on y-axis\n\n\nPopulation\nPosition on x-axis\n\n\nReliability\nColor\n\n\nMOE\nSize\n\n\n\nThe variables on the left are represented by the visualizations on the right."
-  },
-  {
-    "objectID": "weekly-notes/week-03.html#using-ggplot",
-    "href": "weekly-notes/week-03.html#using-ggplot",
-    "title": "Week 3: Learning ggplot & MOE",
-    "section": "Using ggplot",
-    "text": "Using ggplot\n\n1. Setting Up\nggplot(data) # creates a plot from the dataframe 'data'\nggplot() # creates an empty plot for you to fill later\n\n\n2. Aesthetic Mappings\n\n\n\n\n\n\nWarning\n\n\n\nNote: This is not where you decorate (contrary to the naming convention). This only tells the ggplot the factual information about where the columns will go on the plot\n\n\naes()\n\n\n3. The Shape & Type of Chart\ngeom_() # example geom_point(). Stands for 'geometry'\n\n\nExample Code\nggplot(tract_data) +\n  aes(x = population, y = moe_pct) +\n  geom_point()\n\n\nThings to Take Note\nggplot(county_data) +\n  aes(x=estimate, y=population, color=\"blue\") +\n  geom_point()\n\n## NOTE: This will output RED points. Why? Because that is the default color ggplot likes to pick. By putting color in the aes(), it is looking for a column called 'color' that it thinks has data relevant to the plot\n\n## What you should do\n\nggplot(county_data) +\n  aes(x=estimate, y=population) +\n  geom_point(color = \"purple\") # This will work properly\n\n\n\nInside aes()\nNot Inside aes()\n\n\n\n\naes(Color = reliability)\ngeom_point(“blue”)\n\n\n\nDecorations\n\n\n\n\n\n4. Geometry Options\n\n\n\n\n\n\n\nWhat I Want to Know\nGEOM\n\n\n\n\nHow a variable is spread?\ngeom_histogram()\n\n\nHow do two variables relate?\ngeom_point()\n\n\nHow do groups compare?\ngeom_boxplot() # or\ngeom_col()\n\n\nHow do things change over time?\ngeom_line()\n\n\nHow uncertain is a value?\ngeom_errorbar()\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nIf you want to be more advanced, you can combine different geometries into the same plot\n\n\n\n\n5. Error Bars (Example)\ncounty_data %&gt;%\n  ggplot(aes(x = NAME, y = estimate)) +\n  geom_col() +\n  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe)) # errorbars have an upper and lower limit (how big you should make the error bars)\nHowever, this plot has a lot of problems.\n\nThe names at the bottom are jumbled together\nWe have scientific notation (r defaults to this)\nDefault grid in the background\nData is out of order (so you can’t read anything)\nContrast is low\nToo much data\n\n\nFixing the Plot\n# let's make it less horrible\n# reduce to 15 most unreliable.\n\ncounty_data %&gt;%\n  arrange(desc(moe_pct)) %&gt;% # sort data from highest to lowest)\n  slice_head(n = 15) %&gt;% # now that it has been ordered, we are taking a slice from that head (15 of them). Then, this is being passed down to the ggplot\n  ggplot(aes(x = NAME, y = estimate)) +\n  geom_col() +\n  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe)) # this remains the same\n\n## Flip to make names more readable:\ncounty_data %&gt;%\n  arrange(desc(moe_pct)) %&gt;%\n  slice_head(n = 15) %&gt;%\n  ggplot(aes(x = NAME, y = estimate)) +\n  geom_col() +\n  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe)) +\n  coord_flip() # flipping \n\n## Sort bars by bar length rather than alphabetically:\ncounty_data %&gt;%\n  arrange(desc(moe_pct)) %&gt;%\n  slice_head(n = 15) %&gt;%\n  ggplot(aes(x = reorder(NAME, estimate), y = estimate)) + # reorder the x column \n  geom_col() +\n  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe)) +\n  coord_flip()\n\n## Remove \"County, New York\"\n\ncounty_data %&gt;%\n  arrange(desc(moe_pct)) %&gt;%\n  mutate(NAME = str_remove(NAME, \" County, New York\")) %&gt;%\n  slice_head(n = 15) %&gt;%\n  ggplot(aes(x = reorder(NAME, estimate), y = estimate)) +\n  geom_col() +\n  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe)) +\n  coord_flip()\n\n#change to narrower width of the error bars\n\ncounty_data %&gt;%\n  arrange(desc(moe_pct)) %&gt;%\n  mutate(NAME = str_remove(NAME, \" County, New York\")) %&gt;% # mutates the name column in the df to remove the specified string. Since you are specifying NAME, you are just modifying the df instead. As this is run within this plot, it doesn't change the actual df\n  slice_head(n = 15) %&gt;%\n  ggplot(aes(x = reorder(NAME, estimate), y = estimate)) +\n  geom_col() +\n  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe), width = 0.3) +\n  coord_flip()\n\n# tidy up with a nice theme:\ncounty_data %&gt;%\n  arrange(desc(moe_pct)) %&gt;%\n  mutate(NAME = str_remove(NAME, \" County, New York\")) %&gt;%\n  slice_head(n = 15) %&gt;%\n  ggplot(aes(x = reorder(NAME, estimate), y = estimate)) +\n  geom_col(fill = \"steelblue\") +\n  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe), width = 0.3) +\n  coord_flip() +\n  theme_minimal()\n\n# fix labels and numbers:\n\ncounty_data %&gt;%\n  arrange(desc(moe_pct)) %&gt;%\n  mutate(NAME = str_remove(NAME, \" County, New York\")) %&gt;%\n  slice_head(n = 15) %&gt;%\n  ggplot(aes(x = reorder(NAME, estimate), y = estimate)) +\n  geom_col(fill = \"steelblue\") +\n  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe), width = 0.3) +\n  coord_flip() +\n  theme_minimal() +\n  scale_y_continuous(labels = scales::comma) +\n  labs(\n    title = \"Counties with the largest margins of error\",\n    subtitle = \"People below 100% of the poverty level, ACS 2023 5-year estimates\",\n    x = NULL,\n    y = \"Population below poverty level\"\n  )\n\n\n\nCoefficient of Variation (CV)\n\nRelative measure of sampling error\n\\[\\frac{\\text{standard error}}{\\text{estimate}} * 100\\]\n\n\n\n\nCV Threshold\nReliability\n\n\n\n\nLow CV\n15% -&gt; High Reliability\n\n\nMedium CV\n15-30%\n\n\nHigh CV\n30% or more -&gt; Low Reliability (High Sampling Error)\n\n\n\n\n\nDerived Uncertainty\n\\[\\text{poverty rate} = \\frac{\\text{number in poverty}\\pm moe}{\\text{total population} \\pm moe}\\]\nmoe.sum() # adding esitmates together\nmoe.prop() # one estimate as a share of another\nmoe.ratio() # two completely different calculations. eg. ratio of people in poverty / household income. One is NOT a subset of the other\n\n\nLooking back at the ACS\n\nIt measures change over time. Note the overlapping intervals. Eg. When you are asking it for 2023 data, it covers 2019-2023. When you are asking it for 2022 data, it covers 2018-2022.\nIf you are studying change over time, you want non-overlapping intervals. Eg. 2014-2018 and 2019 to 2023. However, you must note that their MOEs will likely be different\n\n\nWorking with an Example\n\nLet’s say we have two ACS datasets\n\n2014 - 2018: $45,000 with a MOE of 8,000\n2019 - 2023: $62,000 with a MOE of 11,000\n\nWe need to get into the maths of the Standard Error of Difference\n\n\\[SE_{diff} = \\sqrt{{SE_1}^2 + {SE_2}^2}\\] \\[Z = (\\text{est}_1 - \\text{est}_2)\\]\n\nIn this case, when we fill in the numbers:\n\n\\[SE_{diff} = \\sqrt{{\\frac{8000}{1.645}}^2 + {\\frac{11000}{1.645}}^2}\\]"
-  },
-  {
-    "objectID": "weekly-notes/week-03.html#homework",
-    "href": "weekly-notes/week-03.html#homework",
-    "title": "Week 3: Learning ggplot & MOE",
-    "section": "Homework",
-    "text": "Homework\n\n\n\n\n\n\nTip\n\n\n\nNote on homework: Due in two weeks. Make sure you upload the link on canvas and follow the code given in the lecture. Work on making nice looking outputs.\n\n\n\nTo tidy up your code, the html instructions have a good overview of that\nProvide a link to your github that would have your quarto document inside for checking"
-  },
-  {
     "objectID": "weekly-notes/week-01.html",
     "href": "weekly-notes/week-01.html",
     "title": "Week 1: Getting Set Up",
@@ -77,6 +35,62 @@
     "text": "Reflection\n\nWhat I want out of this course: To hone my analytic skills over spatial data"
   },
   {
+    "objectID": "weekly-notes/week-02.html",
+    "href": "weekly-notes/week-02.html",
+    "title": "Week 2: Getting Ready",
+    "section": "",
+    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nWe use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\nThings to Note\nThis is to test the nesting feature on .md\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto.\n\n\n\n\n\nWhat is the relationship between Quarto and R?\n\n\nQuarto is a separate package that calls on r to run code and then builds the document around the results.\n\n\nWhat is the difference in scope between _quarto.yml and the YAML header at the top of an individual .qmd file?\n\n\n_quarto.yml adjusts the global theme settings, while the YAML header adjusts the individual header controls.\n\n\nWhat does Git do?\n\n\nIt is a version tracker that runs locally on your computer, watching your folder for changes.\n\n\nWhat is the sequence of work?\n\n\nSave, Render, Commit, Push"
+  },
+  {
+    "objectID": "weekly-notes/week-02.html#review-of-last-week",
+    "href": "weekly-notes/week-02.html#review-of-last-week",
+    "title": "Week 2: Getting Ready",
+    "section": "",
+    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nWe use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\nThings to Note\nThis is to test the nesting feature on .md\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto.\n\n\n\n\n\nWhat is the relationship between Quarto and R?\n\n\nQuarto is a separate package that calls on r to run code and then builds the document around the results.\n\n\nWhat is the difference in scope between _quarto.yml and the YAML header at the top of an individual .qmd file?\n\n\n_quarto.yml adjusts the global theme settings, while the YAML header adjusts the individual header controls.\n\n\nWhat does Git do?\n\n\nIt is a version tracker that runs locally on your computer, watching your folder for changes.\n\n\nWhat is the sequence of work?\n\n\nSave, Render, Commit, Push"
+  },
+  {
+    "objectID": "weekly-notes/week-02.html#what-we-did",
+    "href": "weekly-notes/week-02.html#what-we-did",
+    "title": "Week 2: Getting Ready",
+    "section": "What We Did",
+    "text": "What We Did\n\nLooking Into Themes\n\nFor theme changes, global changes are situated in the _quarto.yml page.\n\n\n\nMarkdown Syntax\n\nTo find out more about Quarto’s Markdown Syntax, visit here. There are many things to explore.1\n\n\n\n\n\n\n\nNote\n\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\nTipTip with Title\n\n\n\nThis is an example of a callout with a title.\n\n\n\n\n\n\n\n\nCautionExpand To Learn About Collapse\n\n\n\n\n\nThis is an example of a ‘folded’ caution callout that can be expanded by the user. You can use collapse=\"true\" to collapse it by default or collapse=\"false\" to make a collapsible callout that is expanded by default."
+  },
+  {
+    "objectID": "weekly-notes/week-02.html#key-concepts",
+    "href": "weekly-notes/week-02.html#key-concepts",
+    "title": "Week 2: Getting Ready",
+    "section": "Key Concepts",
+    "text": "Key Concepts\n\nThings to Know about R\n\n\n\n\n\n\nTipA Note on The Console\n\n\n\nThe console is temporary. While it computes r script just fine, it will disappear once you close the console."
+  },
+  {
+    "objectID": "weekly-notes/week-02.html#objects-verbs-census",
+    "href": "weekly-notes/week-02.html#objects-verbs-census",
+    "title": "Week 2: Getting Ready",
+    "section": "Objects, Verbs, Census",
+    "text": "Objects, Verbs, Census\n\n\n\n\n\n\nTipBreaking Down R Code\n\n\n\n\n\nresult &lt;- filter(counties, population &gt; 50000) # keep the big ones!\n\n\n\n\nresult - this is an object\n&lt;- - this can also be =, it is an assignment arrow\nfilter - this is a function\ncounties - this is input data\npopulation &gt; 50000 - this is an argument\n\n\n\n\n\n\n\nTipPackages\n\n\n\n\n\nPackages are things that can be installed and called upon when you are running your code\n\n\n\n\ninstall.packages(\"dplyr\") - this only needs to be done once\nlibrary(dplyr) - this is like a book. You need to run this every time you use r\n\n\nData Frames\n\n\n\nName\nIncome\nMOE\n\n\n\n\n12\n12\n12\n\n\n123\n123\n123\n\n\n1\n1\n1\n\n\n\n\nNote: tibble is nicer and prints prettier\nNote[2]: MOE stands for Margin of Error\n\n\n\nVerbs\n\nfilter() - picks Rows\nselect() - picks Columns\nmutate() - adds a new Computed Column\narrange() - change order of rows in ascending or descending order\ngroup_by() + summarize() - many rows become few. For example, for a dataframe with many states and income levels, it can group it by state and it can summarize the income levels.\n\n\n\nManipulating the Data (Example - Novice)\n\n\n\n\n\n\nTipStep 1\n\n\n\n\n\nfiller(counties, moe_pct &gt;10)\n\n\n\n\n\n\n\n\n\nTipStep 2\n\n\n\n\n\narrange(Step1, desc(moe_pct))\n\n\n\n\n\n\n\n\n\nTipStep 3\n\n\n\n\n\nSelect(Step2,NAME, (moe_pct)\n\n\n\n\nHowever, this is a very novice way of doing things because it creates more unnecessary data frames that pollute your workspace\n\n\n\nThinking of Advanced Ways\n\n\n\n\n\n\nTip\n\n\n\n\n\nWhile it is good to think about the step-by-step process to be clear about how you are manipulating the data, you can start using the % code to string together functions to compute your data output without creating the files in between.\n\n\n\n\nFor Example\nNew__Data &lt;- Counties %&gt;% \n  filter(moe_pct &gt; 10) %&gt;% \n  arrange(desc(moe_pct)) %&gt;%\n  Select(NAME, moepct)\n\n\n\n\n\n\nWarning\n\n\n\nTake note that everything is case sensitive in R. A good rule of thumb is to put everything in lowercase.\n\n\n\n\n\nThe Census\n\n\n\n\n\n\nTipThe Census\n\n\n\n\n\nThe census is a great source of data that we will use. It is mandated by the constitution to count the number of people that live there on an interval of every 10 years (Decennial Census, created by James Madison). Every person that is in the US (legally or illegally) is asked 10 questions on a 10 year basis.\n\n\n\n\n\n\n\n\n\nTipAmerican Community Survey (ACS)\n\n\n\n\n\nCreated in 2005. It replaced the long form of the Decennial Census. It has more data that we are interested in (things like income, travel patterns). Roughly 3% of households are surveyed. From the sample, an estimate for the population is derived. There are two versions of the ACS.\n\n\n\n\nThe 1-year ACS: Only for places with &gt;65,000 people (metropolitan level). While it is the most current, we don’t often use it in our analysis because we don’t often get the neighborhood level.\nThe 3-year ACS (now deprecated): not in use\nThe 5-year ACS: Goes down to block group, census tract…etc. This means that when you get ACS data for the year 2016 (for example), you are accessing the 5-year average of the neighborhood.\n\n\ntidycensus\n\n\n\n\n\n\nTiptidycensus\n\n\n\ntidycensus is where you can access the census through r in a simple way\n\n\n\nIt is formatted as such: B19013_001E\n\n\nB is the base table\n191032 is the table number\n001E is the line number\nE is the estimate of the MOE\n\n\n\nCensus Tracts\n\nThey are organised from State &gt; County &gt; Tract\n\nA tract is a ‘neighborhood’ or around 5-8,000 people. However, the boundaries keep changing. This is why there are longtitudinal tracts like NHGIS (University of Minnesota) or LTDB (Brown University) that help combat this issue.\n\n\n\n\n\n\nWarning\n\n\n\nThere are also things called block groups, but they are very unreliable. They are not representative, and you should not use this.\n\n\n\n\nGEOID\n\n\n\n\n\n\nTip\n\n\n\nIt used to be an identifier. This is how you decode it.\n\n\n\nSample GEOID\n\n4210100001001\n\n\n42 - State\n101 - County\n000100 - Tract\n1 - Block Group\n\n\n\n\n\n\n\nTip\n\n\n\nThese numbers are stored in strings. You need to keep the GEOID as a string to keep the 0s at the beginning of the first nine GEOIDS (for states that begin with A)\n\n\n\n\n\n\n\n\nWarning\n\n\n\n90% of joining issues are because of type errors between strings and numbers for the GEOID that will result in a failed join.\n\n\ndata &lt;- get_acs(geography = \"county\",\n  variables = c(\"B19013_001\",\n                \"B01003_001\"),\n  state = \"PA\",\n  year = 2023,\n  survey = \"acs5\")\n\n# when we run this code, it will give it to us in a format called tidy(long). What we want is for it to be in WIDE format:\n\ndata &lt;- get_acs(geography = \"county\",\n  variables = c(\"B19013_001\",\n                \"B01003_001\"),\n  state = \"PA\",\n  year = 2023,\n  survey = \"acs5\",\n  output = \"wide\")\n\n\nWhat tidy(long) looks like\n\n\n\nGEOID\nName\nVariable\nEstimate\nMOE\n\n\n\n\n42001\nAdams\nB19013_001\n78915\n3334\n\n\n42001\nAdams\nB01003_001\n104604\nNA\n\n\n\n\n\nWhat WIDE looks like\n\n\n\nGEOID\nName\nB19013_001\nMOE\n\n\n\n\n42001\nAdams\n78915\n3334\n\n\n\n\n\n\n\nNotes for Homework\n\nRender and push it by next Friday. If the numbers for the census seems absurd for statistical analysis, feel free to use your own."
+  },
+  {
+    "objectID": "weekly-notes/week-02.html#reflection",
+    "href": "weekly-notes/week-02.html#reflection",
+    "title": "Week 2: Getting Ready",
+    "section": "Reflection",
+    "text": "Reflection"
+  },
+  {
+    "objectID": "weekly-notes/week-02.html#footnotes",
+    "href": "weekly-notes/week-02.html#footnotes",
+    "title": "Week 2: Getting Ready",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis is a test of an inline note!↩︎"
+  },
+  {
+    "objectID": "data/readme.html",
+    "href": "data/readme.html",
+    "title": "",
+    "section": "",
+    "text": "Code\n\n\n\n\n\nData files for MUSA 5080\nDownload assignment data from Canvas and save it here. Do not rename the files! Have a nice day :)"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Home",
@@ -103,41 +117,6 @@
     "title": "Home",
     "section": "",
     "text": "Email: isaactan@upenn.edu\nGitHub: @isaactanjy"
-  },
-  {
-    "objectID": "assignments/index.html",
-    "href": "assignments/index.html",
-    "title": "Assignments",
-    "section": "",
-    "text": "Completed assignments for MUSA 5080. New assignments appear here automatically once you add the .qmd file to this folder and render.\n\n\n\n\n\n\n\n\n\n\n\nAssignment 2: Who Do We Know the Least About?\n\n\n\n\n\n\n\n\nSep 11, 2026\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Me",
-    "section": "",
-    "text": "I am a student in the MUSA program at Penn. I have a background in Geography and GIS in Planning, and I am interested in communicating geographical spatial analysis for public use.\nI graduated from the University of Oxford with a BA Geography in 2026. During my undergraduate studies, I focused on both the theoretical concepts of human geography and the technical skills of quantitative GIS. As a part of my GIS module, I conducted network analysis to compute the accessibility index of the cycling network of Singapore. I intend to hone these skills further throughout the MUSA course in preparation for my work as an urban planner in Singapore."
-  },
-  {
-    "objectID": "about.html#background",
-    "href": "about.html#background",
-    "title": "About Me",
-    "section": "",
-    "text": "I am a student in the MUSA program at Penn. I have a background in Geography and GIS in Planning, and I am interested in communicating geographical spatial analysis for public use.\nI graduated from the University of Oxford with a BA Geography in 2026. During my undergraduate studies, I focused on both the theoretical concepts of human geography and the technical skills of quantitative GIS. As a part of my GIS module, I conducted network analysis to compute the accessibility index of the cycling network of Singapore. I intend to hone these skills further throughout the MUSA course in preparation for my work as an urban planner in Singapore."
-  },
-  {
-    "objectID": "about.html#skills",
-    "href": "about.html#skills",
-    "title": "About Me",
-    "section": "Skills",
-    "text": "Skills\n\n\nLanguages & Tools: R, Quarto, Git\nSpatial: (add as you learn)\nData: US Census / ACS via tidycensus"
-  },
-  {
-    "objectID": "about.html#contact",
-    "href": "about.html#contact",
-    "title": "About Me",
-    "section": "Contact",
-    "text": "Contact\n\n\nEmail: isaactan@upenn.edu\nGitHub: @isaactanjy"
   },
   {
     "objectID": "assignments/assignment2.html",
@@ -200,14 +179,42 @@
     "href": "assignments/assignment2.html#what-this-means-for-policy",
     "title": "Assignment 2: Who Do We Know the Least About?",
     "section": "What this means for policy",
-    "text": "What this means for policy\nAddress all three:\n\nWhich communities in your state do we know the least about? We know the least about the 11 counties with the lowest confidence levels. This would be Pope County, Bond County, Scott County, Massac County, Pulaski County, Calhoun County, Brown County, Hamilton County, Jasper County, Alexander County, and Hardin County, which had a margin of error percent range of 10.275 to 34.099. As seen in the above table, these counties also have lower average populations compared to the rest of the state.\nWhy? Connect the pattern to how the ACS actually works — it’s a sample, and smaller places yield smaller samples. As the ACS5 already measures a slice of the county population, smaller counties like Hardin County (with about a population of 3623) will have smaller samples that lead to higher variability in the median. With a small population, the statistical standard error increases, resulting in imprecision within the data. Hence, we can conclude that the states with the lower populations are the communities that we know the least about from the ACS5 data.\nWhat could go wrong? Imagine a state agency allocating funding using your variable, treating every county’s number as equally certain. Who is likely to be hurt, and how? If a state agency allocates funding using the variable of median home values, there is a high probability that the ACS5 estimate of the true median of a county may be higher than the actual value. This error in the estimate may result in low confidence counties appearing wealthier than they actually are and receiving less aid than they would need, thus resulting in an inequitable provision of welfare funding."
+    "text": "What this means for policy\n\nWe know the least about the 11 counties with the lowest confidence levels. This would be Pope County, Bond County, Scott County, Massac County, Pulaski County, Calhoun County, Brown County, Hamilton County, Jasper County, Alexander County, and Hardin County, which had a margin of error percent range of 10.275 to 34.099. As seen in the above table, these counties also have lower average populations compared to the rest of the state.\nAs the ACS5 already measures a slice of the county population, smaller counties like Hardin County (with about a population of 3623) will have smaller samples that lead to higher variability in the median. With a small population, the statistical standard error increases, resulting in imprecision within the data. Hence, we can conclude that the states with the lower populations are the communities that we know the least about from the ACS5 data.\nIf a state agency allocates funding using the variable of median home values, there is a high probability that the ACS5 estimate of the true median of a county may be higher than the actual value. This error in the estimate may result in low confidence counties appearing wealthier than they actually are and receiving less aid than they would need, thus resulting in an inequitable provision of welfare funding."
   },
   {
-    "objectID": "data/readme.html",
-    "href": "data/readme.html",
-    "title": "",
+    "objectID": "assignments/index.html",
+    "href": "assignments/index.html",
+    "title": "Assignments",
     "section": "",
-    "text": "Code\n\n\n\n\n\nData files for MUSA 5080\nDownload assignment data from Canvas and save it here. Do not rename the files! Have a nice day :)"
+    "text": "Completed assignments for MUSA 5080. New assignments appear here automatically once you add the .qmd file to this folder and render.\n\n\n\n\n\n\n\n\n\n\n\nAssignment 2: Who Do We Know the Least About?\n\n\n\n\n\n\n\n\nSep 17, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "I am a student in the MUSA program at Penn. I have a background in Geography and GIS in Planning, and I am interested in communicating geographical spatial analysis for public use.\nI graduated from the University of Oxford with a BA Geography in 2026. During my undergraduate studies, I focused on both the theoretical concepts of human geography and the technical skills of quantitative GIS. As a part of my GIS module, I conducted network analysis to compute the accessibility index of the cycling network of Singapore. I intend to hone these skills further throughout the MUSA course in preparation for my work as an urban planner in Singapore."
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About Me",
+    "section": "",
+    "text": "I am a student in the MUSA program at Penn. I have a background in Geography and GIS in Planning, and I am interested in communicating geographical spatial analysis for public use.\nI graduated from the University of Oxford with a BA Geography in 2026. During my undergraduate studies, I focused on both the theoretical concepts of human geography and the technical skills of quantitative GIS. As a part of my GIS module, I conducted network analysis to compute the accessibility index of the cycling network of Singapore. I intend to hone these skills further throughout the MUSA course in preparation for my work as an urban planner in Singapore."
+  },
+  {
+    "objectID": "about.html#skills",
+    "href": "about.html#skills",
+    "title": "About Me",
+    "section": "Skills",
+    "text": "Skills\n\n\nLanguages & Tools: R, Quarto, Git\nSpatial: (add as you learn)\nData: US Census / ACS via tidycensus"
+  },
+  {
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About Me",
+    "section": "Contact",
+    "text": "Contact\n\n\nEmail: isaactan@upenn.edu\nGitHub: @isaactanjy"
   },
   {
     "objectID": "weekly-notes/index.html",
@@ -217,52 +224,45 @@
     "text": "Notes from each week of MUSA 5080. New entries appear here automatically — add a .qmd file to this folder and render.\n\n\n\n\n\n\n\n\n\n\n\nWeek 3: Learning ggplot & MOE\n\n\nDeep Dive into Understanding and Visualizing the MOE\n\n\n\n\n\nSep 11, 2026\n\n\n\n\n\n\n\nWeek 2: Getting Ready\n\n\nLet’s get the ball rolling.\n\n\n\n\n\nSep 4, 2026\n\n\n\n\n\n\n\nWeek 1: Getting Set Up\n\n\nFirst impressions, and getting the workflow running.\n\n\n\n\n\nAug 28, 2026\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "weekly-notes/week-02.html",
-    "href": "weekly-notes/week-02.html",
-    "title": "Week 2: Getting Ready",
+    "objectID": "weekly-notes/week-03.html",
+    "href": "weekly-notes/week-03.html",
+    "title": "Week 3: Learning ggplot & MOE",
     "section": "",
-    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nWe use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\nThings to Note\nThis is to test the nesting feature on .md\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto.\n\n\n\n\n\nWhat is the relationship between Quarto and R?\n\n\nQuarto is a separate package that calls on r to run code and then builds the document around the results.\n\n\nWhat is the difference in scope between _quarto.yml and the YAML header at the top of an individual .qmd file?\n\n\n_quarto.yml adjusts the global theme settings, while the YAML header adjusts the individual header controls.\n\n\nWhat does Git do?\n\n\nIt is a version tracker that runs locally on your computer, watching your folder for changes.\n\n\nWhat is the sequence of work?\n\n\nSave, Render, Commit, Push"
+    "text": "datavi3 - How to build a ggplot\nMore info on MOEs (Including Change Over Time)\nRunning through W3 R code"
   },
   {
-    "objectID": "weekly-notes/week-02.html#review-of-last-week",
-    "href": "weekly-notes/week-02.html#review-of-last-week",
-    "title": "Week 2: Getting Ready",
+    "objectID": "weekly-notes/week-03.html#overview-of-lecture",
+    "href": "weekly-notes/week-03.html#overview-of-lecture",
+    "title": "Week 3: Learning ggplot & MOE",
     "section": "",
-    "text": "File Management\nCoding Anxiety\nGit & Workflow\n\nWe use R for the statistical analysis, and Quarto is used to run the code and weave the output into the final document.\n\nThings to Note\nThis is to test the nesting feature on .md\n\n\n\nMarkdown is a file format that we will use to write explanations and narrative next. There is a Markdown language guide on Canvas that is common to anything that uses Markdown (.md), including Quarto.\n\n\n\n\n\nWhat is the relationship between Quarto and R?\n\n\nQuarto is a separate package that calls on r to run code and then builds the document around the results.\n\n\nWhat is the difference in scope between _quarto.yml and the YAML header at the top of an individual .qmd file?\n\n\n_quarto.yml adjusts the global theme settings, while the YAML header adjusts the individual header controls.\n\n\nWhat does Git do?\n\n\nIt is a version tracker that runs locally on your computer, watching your folder for changes.\n\n\nWhat is the sequence of work?\n\n\nSave, Render, Commit, Push"
+    "text": "datavi3 - How to build a ggplot\nMore info on MOEs (Including Change Over Time)\nRunning through W3 R code"
   },
   {
-    "objectID": "weekly-notes/week-02.html#what-we-did",
-    "href": "weekly-notes/week-02.html#what-we-did",
-    "title": "Week 2: Getting Ready",
-    "section": "What We Did",
-    "text": "What We Did\n\nLooking Into Themes\n\nFor theme changes, global changes are situated in the _quarto.yml page.\n\n\n\nMarkdown Syntax\n\nTo find out more about Quarto’s Markdown Syntax, visit here. There are many things to explore.1\n\n\n\n\n\n\n\nNote\n\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\nTipTip with Title\n\n\n\nThis is an example of a callout with a title.\n\n\n\n\n\n\n\n\nCautionExpand To Learn About Collapse\n\n\n\n\n\nThis is an example of a ‘folded’ caution callout that can be expanded by the user. You can use collapse=\"true\" to collapse it by default or collapse=\"false\" to make a collapsible callout that is expanded by default."
+    "objectID": "weekly-notes/week-03.html#ansombes-quartet",
+    "href": "weekly-notes/week-03.html#ansombes-quartet",
+    "title": "Week 3: Learning ggplot & MOE",
+    "section": "Ansombe’s Quartet",
+    "text": "Ansombe’s Quartet\n\n\n\n\n\n\nTip\n\n\n\nThese four graphs have the same mean (x and y), correlation, and regression line, but they look very different."
   },
   {
-    "objectID": "weekly-notes/week-02.html#key-concepts",
-    "href": "weekly-notes/week-02.html#key-concepts",
-    "title": "Week 2: Getting Ready",
-    "section": "Key Concepts",
-    "text": "Key Concepts\n\nThings to Know about R\n\n\n\n\n\n\nTipA Note on The Console\n\n\n\nThe console is temporary. While it computes r script just fine, it will disappear once you close the console."
+    "objectID": "weekly-notes/week-03.html#plots",
+    "href": "weekly-notes/week-03.html#plots",
+    "title": "Week 3: Learning ggplot & MOE",
+    "section": "Plots",
+    "text": "Plots\n\n\n\n\n\n\nTip\n\n\n\n\n\nIn data science, mapping refers to a very different thing from cartographical maps. A plot is mapping from columns in your data to visual properties on your page. This is known as the “Grammar of Graphics” aka “gg”\n\n\n\n\nFor Example\n\n\n\nYour Data (Example Variables)\nPage (Canvas)\n\n\n\n\nEstimate\nPosition on y-axis\n\n\nPopulation\nPosition on x-axis\n\n\nReliability\nColor\n\n\nMOE\nSize\n\n\n\nThe variables on the left are represented by the visualizations on the right."
   },
   {
-    "objectID": "weekly-notes/week-02.html#objects-verbs-census",
-    "href": "weekly-notes/week-02.html#objects-verbs-census",
-    "title": "Week 2: Getting Ready",
-    "section": "Objects, Verbs, Census",
-    "text": "Objects, Verbs, Census\n\n\n\n\n\n\nTipBreaking Down R Code\n\n\n\n\n\nresult &lt;- filter(counties, population &gt; 50000) # keep the big ones!\n\n\n\n\nresult - this is an object\n&lt;- - this can also be =, it is an assignment arrow\nfilter - this is a function\ncounties - this is input data\npopulation &gt; 50000 - this is an argument\n\n\n\n\n\n\n\nTipPackages\n\n\n\n\n\nPackages are things that can be installed and called upon when you are running your code\n\n\n\n\ninstall.packages(\"dplyr\") - this only needs to be done once\nlibrary(dplyr) - this is like a book. You need to run this every time you use r\n\n\nData Frames\n\n\n\nName\nIncome\nMOE\n\n\n\n\n12\n12\n12\n\n\n123\n123\n123\n\n\n1\n1\n1\n\n\n\n\nNote: tibble is nicer and prints prettier\nNote[2]: MOE stands for Margin of Error\n\n\n\nVerbs\n\nfilter() - picks Rows\nselect() - picks Columns\nmutate() - adds a new Computed Column\narrange() - change order of rows in ascending or descending order\ngroup_by() + summarize() - many rows become few. For example, for a dataframe with many states and income levels, it can group it by state and it can summarize the income levels.\n\n\n\nManipulating the Data (Example - Novice)\n\n\n\n\n\n\nTipStep 1\n\n\n\n\n\nfiller(counties, moe_pct &gt;10)\n\n\n\n\n\n\n\n\n\nTipStep 2\n\n\n\n\n\narrange(Step1, desc(moe_pct))\n\n\n\n\n\n\n\n\n\nTipStep 3\n\n\n\n\n\nSelect(Step2,NAME, (moe_pct)\n\n\n\n\nHowever, this is a very novice way of doing things because it creates more unnecessary data frames that pollute your workspace\n\n\n\nThinking of Advanced Ways\n\n\n\n\n\n\nTip\n\n\n\n\n\nWhile it is good to think about the step-by-step process to be clear about how you are manipulating the data, you can start using the % code to string together functions to compute your data output without creating the files in between.\n\n\n\n\nFor Example\nNew__Data &lt;- Counties %&gt;% \n  filter(moe_pct &gt; 10) %&gt;% \n  arrange(desc(moe_pct)) %&gt;%\n  Select(NAME, moepct)\n\n\n\n\n\n\nWarning\n\n\n\nTake note that everything is case sensitive in R. A good rule of thumb is to put everything in lowercase.\n\n\n\n\n\nThe Census\n\n\n\n\n\n\nTipThe Census\n\n\n\n\n\nThe census is a great source of data that we will use. It is mandated by the constitution to count the number of people that live there on an interval of every 10 years (Decennial Census, created by James Madison). Every person that is in the US (legally or illegally) is asked 10 questions on a 10 year basis.\n\n\n\n\n\n\n\n\n\nTipAmerican Community Survey (ACS)\n\n\n\n\n\nCreated in 2005. It replaced the long form of the Decennial Census. It has more data that we are interested in (things like income, travel patterns). Roughly 3% of households are surveyed. From the sample, an estimate for the population is derived. There are two versions of the ACS.\n\n\n\n\nThe 1-year ACS: Only for places with &gt;65,000 people (metropolitan level). While it is the most current, we don’t often use it in our analysis because we don’t often get the neighborhood level.\nThe 3-year ACS (now deprecated): not in use\nThe 5-year ACS: Goes down to block group, census tract…etc. This means that when you get ACS data for the year 2016 (for example), you are accessing the 5-year average of the neighborhood.\n\n\ntidycensus\n\n\n\n\n\n\nTiptidycensus\n\n\n\ntidycensus is where you can access the census through r in a simple way\n\n\n\nIt is formatted as such: B19013_001E\n\n\nB is the base table\n191032 is the table number\n001E is the line number\nE is the estimate of the MOE\n\n\n\nCensus Tracts\n\nThey are organised from State &gt; County &gt; Tract\n\nA tract is a ‘neighborhood’ or around 5-8,000 people. However, the boundaries keep changing. This is why there are longtitudinal tracts like NHGIS (University of Minnesota) or LTDB (Brown University) that help combat this issue.\n\n\n\n\n\n\nWarning\n\n\n\nThere are also things called block groups, but they are very unreliable. They are not representative, and you should not use this.\n\n\n\n\nGEOID\n\n\n\n\n\n\nTip\n\n\n\nIt used to be an identifier. This is how you decode it.\n\n\n\nSample GEOID\n\n4210100001001\n\n\n42 - State\n101 - County\n000100 - Tract\n1 - Block Group\n\n\n\n\n\n\n\nTip\n\n\n\nThese numbers are stored in strings. You need to keep the GEOID as a string to keep the 0s at the beginning of the first nine GEOIDS (for states that begin with A)\n\n\n\n\n\n\n\n\nWarning\n\n\n\n90% of joining issues are because of type errors between strings and numbers for the GEOID that will result in a failed join.\n\n\ndata &lt;- get_acs(geography = \"county\",\n  variables = c(\"B19013_001\",\n                \"B01003_001\"),\n  state = \"PA\",\n  year = 2023,\n  survey = \"acs5\")\n\n# when we run this code, it will give it to us in a format called tidy(long). What we want is for it to be in WIDE format:\n\ndata &lt;- get_acs(geography = \"county\",\n  variables = c(\"B19013_001\",\n                \"B01003_001\"),\n  state = \"PA\",\n  year = 2023,\n  survey = \"acs5\",\n  output = \"wide\")\n\n\nWhat tidy(long) looks like\n\n\n\nGEOID\nName\nVariable\nEstimate\nMOE\n\n\n\n\n42001\nAdams\nB19013_001\n78915\n3334\n\n\n42001\nAdams\nB01003_001\n104604\nNA\n\n\n\n\n\nWhat WIDE looks like\n\n\n\nGEOID\nName\nB19013_001\nMOE\n\n\n\n\n42001\nAdams\n78915\n3334\n\n\n\n\n\n\n\nNotes for Homework\n\nRender and push it by next Friday. If the numbers for the census seems absurd for statistical analysis, feel free to use your own."
+    "objectID": "weekly-notes/week-03.html#using-ggplot",
+    "href": "weekly-notes/week-03.html#using-ggplot",
+    "title": "Week 3: Learning ggplot & MOE",
+    "section": "Using ggplot",
+    "text": "Using ggplot\n\n1. Setting Up\nggplot(data) # creates a plot from the dataframe 'data'\nggplot() # creates an empty plot for you to fill later\n\n\n2. Aesthetic Mappings\n\n\n\n\n\n\nWarning\n\n\n\nNote: This is not where you decorate (contrary to the naming convention). This only tells the ggplot the factual information about where the columns will go on the plot\n\n\naes()\n\n\n3. The Shape & Type of Chart\ngeom_() # example geom_point(). Stands for 'geometry'\n\n\nExample Code\nggplot(tract_data) +\n  aes(x = population, y = moe_pct) +\n  geom_point()\n\n\nThings to Take Note\nggplot(county_data) +\n  aes(x=estimate, y=population, color=\"blue\") +\n  geom_point()\n\n## NOTE: This will output RED points. Why? Because that is the default color ggplot likes to pick. By putting color in the aes(), it is looking for a column called 'color' that it thinks has data relevant to the plot\n\n## What you should do\n\nggplot(county_data) +\n  aes(x=estimate, y=population) +\n  geom_point(color = \"purple\") # This will work properly\n\n\n\nInside aes()\nNot Inside aes()\n\n\n\n\naes(Color = reliability)\ngeom_point(“blue”)\n\n\n\nDecorations\n\n\n\n\n\n4. Geometry Options\n\n\n\n\n\n\n\nWhat I Want to Know\nGEOM\n\n\n\n\nHow a variable is spread?\ngeom_histogram()\n\n\nHow do two variables relate?\ngeom_point()\n\n\nHow do groups compare?\ngeom_boxplot() # or\ngeom_col()\n\n\nHow do things change over time?\ngeom_line()\n\n\nHow uncertain is a value?\ngeom_errorbar()\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nIf you want to be more advanced, you can combine different geometries into the same plot\n\n\n\n\n5. Error Bars (Example)\ncounty_data %&gt;%\n  ggplot(aes(x = NAME, y = estimate)) +\n  geom_col() +\n  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe)) # errorbars have an upper and lower limit (how big you should make the error bars)\nHowever, this plot has a lot of problems.\n\nThe names at the bottom are jumbled together\nWe have scientific notation (r defaults to this)\nDefault grid in the background\nData is out of order (so you can’t read anything)\nContrast is low\nToo much data\n\n\nFixing the Plot\n# let's make it less horrible\n# reduce to 15 most unreliable.\n\ncounty_data %&gt;%\n  arrange(desc(moe_pct)) %&gt;% # sort data from highest to lowest)\n  slice_head(n = 15) %&gt;% # now that it has been ordered, we are taking a slice from that head (15 of them). Then, this is being passed down to the ggplot\n  ggplot(aes(x = NAME, y = estimate)) +\n  geom_col() +\n  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe)) # this remains the same\n\n## Flip to make names more readable:\ncounty_data %&gt;%\n  arrange(desc(moe_pct)) %&gt;%\n  slice_head(n = 15) %&gt;%\n  ggplot(aes(x = NAME, y = estimate)) +\n  geom_col() +\n  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe)) +\n  coord_flip() # flipping \n\n## Sort bars by bar length rather than alphabetically:\ncounty_data %&gt;%\n  arrange(desc(moe_pct)) %&gt;%\n  slice_head(n = 15) %&gt;%\n  ggplot(aes(x = reorder(NAME, estimate), y = estimate)) + # reorder the x column \n  geom_col() +\n  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe)) +\n  coord_flip()\n\n## Remove \"County, New York\"\n\ncounty_data %&gt;%\n  arrange(desc(moe_pct)) %&gt;%\n  mutate(NAME = str_remove(NAME, \" County, New York\")) %&gt;%\n  slice_head(n = 15) %&gt;%\n  ggplot(aes(x = reorder(NAME, estimate), y = estimate)) +\n  geom_col() +\n  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe)) +\n  coord_flip()\n\n#change to narrower width of the error bars\n\ncounty_data %&gt;%\n  arrange(desc(moe_pct)) %&gt;%\n  mutate(NAME = str_remove(NAME, \" County, New York\")) %&gt;% # mutates the name column in the df to remove the specified string. Since you are specifying NAME, you are just modifying the df instead. As this is run within this plot, it doesn't change the actual df\n  slice_head(n = 15) %&gt;%\n  ggplot(aes(x = reorder(NAME, estimate), y = estimate)) +\n  geom_col() +\n  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe), width = 0.3) +\n  coord_flip()\n\n# tidy up with a nice theme:\ncounty_data %&gt;%\n  arrange(desc(moe_pct)) %&gt;%\n  mutate(NAME = str_remove(NAME, \" County, New York\")) %&gt;%\n  slice_head(n = 15) %&gt;%\n  ggplot(aes(x = reorder(NAME, estimate), y = estimate)) +\n  geom_col(fill = \"steelblue\") +\n  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe), width = 0.3) +\n  coord_flip() +\n  theme_minimal()\n\n# fix labels and numbers:\n\ncounty_data %&gt;%\n  arrange(desc(moe_pct)) %&gt;%\n  mutate(NAME = str_remove(NAME, \" County, New York\")) %&gt;%\n  slice_head(n = 15) %&gt;%\n  ggplot(aes(x = reorder(NAME, estimate), y = estimate)) +\n  geom_col(fill = \"steelblue\") +\n  geom_errorbar(aes(ymin = estimate - moe, ymax = estimate + moe), width = 0.3) +\n  coord_flip() +\n  theme_minimal() +\n  scale_y_continuous(labels = scales::comma) +\n  labs(\n    title = \"Counties with the largest margins of error\",\n    subtitle = \"People below 100% of the poverty level, ACS 2023 5-year estimates\",\n    x = NULL,\n    y = \"Population below poverty level\"\n  )\n\n\n\nCoefficient of Variation (CV)\n\nRelative measure of sampling error\n\\[\\frac{\\text{standard error}}{\\text{estimate}} * 100\\]\n\n\n\n\nCV Threshold\nReliability\n\n\n\n\nLow CV\n15% -&gt; High Reliability\n\n\nMedium CV\n15-30%\n\n\nHigh CV\n30% or more -&gt; Low Reliability (High Sampling Error)\n\n\n\n\n\nDerived Uncertainty\n\\[\\text{poverty rate} = \\frac{\\text{number in poverty}\\pm moe}{\\text{total population} \\pm moe}\\]\nmoe.sum() # adding esitmates together\nmoe.prop() # one estimate as a share of another\nmoe.ratio() # two completely different calculations. eg. ratio of people in poverty / household income. One is NOT a subset of the other\n\n\nLooking back at the ACS\n\nIt measures change over time. Note the overlapping intervals. Eg. When you are asking it for 2023 data, it covers 2019-2023. When you are asking it for 2022 data, it covers 2018-2022.\nIf you are studying change over time, you want non-overlapping intervals. Eg. 2014-2018 and 2019 to 2023. However, you must note that their MOEs will likely be different\n\n\nWorking with an Example\n\nLet’s say we have two ACS datasets\n\n2014 - 2018: $45,000 with a MOE of 8,000\n2019 - 2023: $62,000 with a MOE of 11,000\n\nWe need to get into the maths of the Standard Error of Difference\n\n\\[SE_{diff} = \\sqrt{{SE_1}^2 + {SE_2}^2}\\] \\[Z = (\\text{est}_1 - \\text{est}_2)\\]\n\nIn this case, when we fill in the numbers:\n\n\\[SE_{diff} = \\sqrt{{\\frac{8000}{1.645}}^2 + {\\frac{11000}{1.645}}^2}\\]"
   },
   {
-    "objectID": "weekly-notes/week-02.html#reflection",
-    "href": "weekly-notes/week-02.html#reflection",
-    "title": "Week 2: Getting Ready",
-    "section": "Reflection",
-    "text": "Reflection"
-  },
-  {
-    "objectID": "weekly-notes/week-02.html#footnotes",
-    "href": "weekly-notes/week-02.html#footnotes",
-    "title": "Week 2: Getting Ready",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThis is a test of an inline note!↩︎"
+    "objectID": "weekly-notes/week-03.html#homework",
+    "href": "weekly-notes/week-03.html#homework",
+    "title": "Week 3: Learning ggplot & MOE",
+    "section": "Homework",
+    "text": "Homework\n\n\n\n\n\n\nTip\n\n\n\nNote on homework: Due in two weeks. Make sure you upload the link on canvas and follow the code given in the lecture. Work on making nice looking outputs.\n\n\n\nTo tidy up your code, the html instructions have a good overview of that\nProvide a link to your github that would have your quarto document inside for checking"
   }
 ]

@@ -166,9 +166,7 @@ populations, the level of confidence in the data increases.**
 
 ## What this means for policy
 
-Address all three:
-
-1.  **Which communities in your state do we know the least about?** *We
+1.  *We
     know the least about the 11 counties with the lowest confidence
     levels. This would be Pope County, Bond County, Scott County, Massac
     County, Pulaski County, Calhoun County, Brown County, Hamilton
@@ -176,8 +174,7 @@ Address all three:
     had a margin of error percent range of 10.275 to 34.099. As seen in
     the above table, these counties also have lower average populations
     compared to the rest of the state.*
-2.  **Why?** Connect the pattern to how the ACS actually works — it's a
-    sample, and smaller places yield smaller samples. *As the ACS5
+2.  *As the ACS5
     already measures a slice of the county population, smaller counties
     like Hardin County (with about a population of 3623) will have
     smaller samples that lead to higher variability in the median. With
@@ -185,9 +182,7 @@ Address all three:
     resulting in imprecision within the data. Hence, we can conclude
     that the states with the lower populations are the communities that
     we know the least about from the ACS5 data.*
-3.  **What could go wrong?** Imagine a state agency allocating funding
-    using your variable, treating every county's number as equally
-    certain. Who is likely to be hurt, and how? *If a state agency
+3.  *If a state agency
     allocates funding using the variable of median home values, there is
     a high probability that the ACS5 estimate of the true median of a
     county may be higher than the actual value. This error in the
