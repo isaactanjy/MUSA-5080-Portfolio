@@ -541,6 +541,6 @@ tracts, only 63 show a change in poverty rate between 2006–2010 and
 confidence. For the remaining 313 tracts, the margins of error in the
 underlying survey data are wide enough that the apparent changes in
 poverty rate cannot be reliably separated from sampling noise. Thus,
-claims about dramatic poverty increases in specific neighborhoods, and
-about surging white poverty across the Northeast, rest on point
+claims about dramatic poverty increases in specific neighborhoods and
+about surging white poverty across the Northeast rest on point
 estimates that the data cannot confidently support at the tract level.
