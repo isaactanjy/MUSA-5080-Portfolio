@@ -42,8 +42,7 @@ $$SE_{diff} = \sqrt{({\frac{3}{1.645})}^2 + ({\frac{4}{1.645}})^2} = 3.04$$ $$ Z
 | 200   | 27000      |
 | 400   | 39000      |
 
-```{left_join(income.b, income.c, by="GEOID")}
-```
+`{left_join(income.b, income.c, by="GEOID")}`
 
 #### Output
 
@@ -61,13 +60,11 @@ Take note! The GEOID's must be the same character type (eg. string)
 
 #### Full Join
 
-```{full_join(income.b, income.c, by="GEOID")}
-```
+`{full_join(income.b, income.c, by="GEOID")}`
 
 ### Geometry
 
-```{get_acs(..., geometry=TRUE)}
-```
+`{get_acs(..., geometry=TRUE)}`
 
 When you add this option it creates a column in the table with the geometry of the variable. Note that this column is sticky (it is always there), and it can slow down some operations/render some unusable. This is why we learn how to remove it first and add it back again later.
 
@@ -159,15 +156,11 @@ All data is going to come with a CRS. The most common problem you may face with 
 
 The code to attach it back is the `St_set.crs()`. If you want to change it to a different CRS, you should use `St_transform()`.
 
-```{st_crs(data) -> # this will tell you what the CRS is currently set to. We do this because we need to know the units.}
-st_set_crs() -> # adding the correct label. This is only used to place the label back on.
-st_transform() -> # transforms the coordinate reference system to what you want it to be.
-```
+`{st_crs(data) -> # this will tell you what the CRS is currently set to. We do this because we need to know the units.} st_set_crs() -> # adding the correct label. This is only used to place the label back on. st_transform() -> # transforms the coordinate reference system to what you want it to be.`
 
 ### Buffers
 
-```{st_buffer(stations, 500) # note that the 500 is in the units of the layer. If 'stations' is in meters, you will get 500 meters. You have to do the maths}
-```
+`{st_buffer(stations, 500) # note that the 500 is in the units of the layer. If 'stations' is in meters, you will get 500 meters. You have to do the maths}`
 
 ## 3. Spatial Analysis Examples
 
@@ -175,16 +168,8 @@ Anything that you do with spatial begins with `st`. It only works with data with
 
 ### Intersects
 
-```{st_intersects() # returns whether the geometries intersect (true or false)}
-st_touches() # the geometries must share a border (so those nested within are not counted)
-st_within() # polygons that are inside another one (returns true)
-st_filer() # spatial selection of filter based on distance. Only counts polygons fully within 
-st_intersection() # shapes change, usually leading to more shapes
-st_union() # everything
-```
+`{st_intersects() # returns whether the geometries intersect (true or false)} st_touches() # the geometries must share a border (so those nested within are not counted) st_within() # polygons that are inside another one (returns true) st_filer() # spatial selection of filter based on distance. Only counts polygons fully within  st_intersection() # shapes change, usually leading to more shapes st_union() # everything`
 
 #### Example
 
-```{st_join(stations, tracts)}
-st_distance() # returns a matrix with distance between all of the stations and the tracts (for example)
-```
+`{st_join(stations, tracts)} st_distance() # returns a matrix with distance between all of the stations and the tracts (for example)`
