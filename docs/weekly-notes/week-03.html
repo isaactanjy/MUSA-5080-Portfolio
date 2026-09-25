@@ -783,9 +783,9 @@ Tip
 <section id="derived-uncertainty" class="level3">
 <h3 class="anchored" data-anchor-id="derived-uncertainty">Derived Uncertainty</h3>
 <p><span class="math display">\[\text{poverty rate} = \frac{\text{number in poverty}\pm moe}{\text{total population} \pm moe}\]</span></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">moe.sum</span>() <span class="co"># adding esitmates together</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">moe.prop</span>() <span class="co"># one estimate as a share of another</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">moe.ratio</span>() <span class="co"># two completely different calculations. eg. ratio of people in poverty / household income. One is NOT a subset of the other</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">moe_sum</span>() <span class="co"># adding estimates together</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">moe_prop</span>() <span class="co"># one estimate as a share of another</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">moe_ratio</span>() <span class="co"># two completely different calculations. eg. ratio of people in poverty / household income. One is NOT a subset of the other</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="looking-back-at-the-acs" class="level3">
 <h3 class="anchored" data-anchor-id="looking-back-at-the-acs">Looking back at the ACS</h3>
@@ -807,7 +807,7 @@ Tip
 <ol start="3" type="1">
 <li>In this case, when we fill in the numbers:</li>
 </ol>
-<p><span class="math display">\[SE_{diff} = \sqrt{{\frac{8000}{1.645}}^2 + {\frac{11000}{1.645}}^2}\]</span></p>
+<p><span class="math display">\[SE_{diff} = \sqrt{({\frac{8000}{1.645})}^2 + ({\frac{11000}{1.645})}^2}\]</span></p>
 </section>
 </section>
 </section>
@@ -1542,9 +1542,9 @@ Tip
 <span id="cb14-239"><a href="#cb14-239" aria-hidden="true" tabindex="-1"></a>$$\text{poverty rate} = \frac{\text{number in poverty}\pm moe}{\text{total population} \pm moe}$$</span>
 <span id="cb14-240"><a href="#cb14-240" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-241"><a href="#cb14-241" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb14-242"><a href="#cb14-242" aria-hidden="true" tabindex="-1"></a><span class="fu">moe.sum</span>() <span class="co"># adding esitmates together</span></span>
-<span id="cb14-243"><a href="#cb14-243" aria-hidden="true" tabindex="-1"></a><span class="fu">moe.prop</span>() <span class="co"># one estimate as a share of another</span></span>
-<span id="cb14-244"><a href="#cb14-244" aria-hidden="true" tabindex="-1"></a><span class="fu">moe.ratio</span>() <span class="co"># two completely different calculations. eg. ratio of people in poverty / household income. One is NOT a subset of the other</span></span>
+<span id="cb14-242"><a href="#cb14-242" aria-hidden="true" tabindex="-1"></a><span class="fu">moe_sum</span>() <span class="co"># adding estimates together</span></span>
+<span id="cb14-243"><a href="#cb14-243" aria-hidden="true" tabindex="-1"></a><span class="fu">moe_prop</span>() <span class="co"># one estimate as a share of another</span></span>
+<span id="cb14-244"><a href="#cb14-244" aria-hidden="true" tabindex="-1"></a><span class="fu">moe_ratio</span>() <span class="co"># two completely different calculations. eg. ratio of people in poverty / household income. One is NOT a subset of the other</span></span>
 <span id="cb14-245"><a href="#cb14-245" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb14-246"><a href="#cb14-246" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-247"><a href="#cb14-247" aria-hidden="true" tabindex="-1"></a><span class="fu">### Looking back at the ACS</span></span>
@@ -1559,21 +1559,20 @@ Tip
 <span id="cb14-256"><a href="#cb14-256" aria-hidden="true" tabindex="-1"></a><span class="ss">    2.  </span>2019 - 2023: \$62,000 with a MOE of 11,000</span>
 <span id="cb14-257"><a href="#cb14-257" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>We need to get into the maths of the *Standard Error of Difference*</span>
 <span id="cb14-258"><a href="#cb14-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-259"><a href="#cb14-259" aria-hidden="true" tabindex="-1"></a>$$SE_{diff} = \sqrt{{SE_1}^2 + {SE_2}^2}$$</span>
-<span id="cb14-260"><a href="#cb14-260" aria-hidden="true" tabindex="-1"></a>$$Z = (\text{est}_1 - \text{est}_2)$$</span>
-<span id="cb14-261"><a href="#cb14-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-262"><a href="#cb14-262" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>In this case, when we fill in the numbers:</span>
-<span id="cb14-263"><a href="#cb14-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-264"><a href="#cb14-264" aria-hidden="true" tabindex="-1"></a>$$SE_{diff} = \sqrt{{\frac{8000}{1.645}}^2 + {\frac{11000}{1.645}}^2}$$</span>
-<span id="cb14-265"><a href="#cb14-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-266"><a href="#cb14-266" aria-hidden="true" tabindex="-1"></a><span class="fu">## Homework</span></span>
-<span id="cb14-267"><a href="#cb14-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-268"><a href="#cb14-268" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
-<span id="cb14-269"><a href="#cb14-269" aria-hidden="true" tabindex="-1"></a>Note on homework: Due in two weeks. Make sure you upload the link on canvas and follow the code given in the lecture. Work on making nice looking outputs.</span>
-<span id="cb14-270"><a href="#cb14-270" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb14-271"><a href="#cb14-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-272"><a href="#cb14-272" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>To tidy up your code, the html instructions have a good overview of that</span>
-<span id="cb14-273"><a href="#cb14-273" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Provide a link to your github that would have your quarto document inside for checking</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb14-259"><a href="#cb14-259" aria-hidden="true" tabindex="-1"></a>$$SE_{diff} = \sqrt{{SE_1}^2 + {SE_2}^2}$$ $$Z = (\text{est}_1 - \text{est}_2)$$</span>
+<span id="cb14-260"><a href="#cb14-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-261"><a href="#cb14-261" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>In this case, when we fill in the numbers:</span>
+<span id="cb14-262"><a href="#cb14-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-263"><a href="#cb14-263" aria-hidden="true" tabindex="-1"></a>$$SE_{diff} = \sqrt{({\frac{8000}{1.645})}^2 + ({\frac{11000}{1.645})}^2}$$</span>
+<span id="cb14-264"><a href="#cb14-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-265"><a href="#cb14-265" aria-hidden="true" tabindex="-1"></a><span class="fu">## Homework</span></span>
+<span id="cb14-266"><a href="#cb14-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-267"><a href="#cb14-267" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb14-268"><a href="#cb14-268" aria-hidden="true" tabindex="-1"></a>Note on homework: Due in two weeks. Make sure you upload the link on canvas and follow the code given in the lecture. Work on making nice looking outputs.</span>
+<span id="cb14-269"><a href="#cb14-269" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb14-270"><a href="#cb14-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-271"><a href="#cb14-271" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>To tidy up your code, the html instructions have a good overview of that</span>
+<span id="cb14-272"><a href="#cb14-272" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Provide a link to your github that would have your quarto document inside for checking</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

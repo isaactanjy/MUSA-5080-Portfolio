@@ -115,7 +115,7 @@ county_data %>%
 
 ## Derived Uncertainty
 
-# you want the total number of people below poverty across several couties. You need the MOE for that combined number. you don't just add the MOEs together!
+# you want the total number of people below poverty across several counties. You need the MOE for that combined number. you don't just add the MOEs together!
 
 region <- county_data %>%
   filter(NAME %in% c("Hamilton County, New York",
@@ -182,7 +182,7 @@ poverty_wide <- poverty_change %>%
 
 # Compute change
 
-poverty_tested <- poverty_wide %>% # this gooes through to calculate the standard errors, the moe differences, and the z scores
+poverty_tested <- poverty_wide %>% # this goes through to calculate the standard errors, the moe differences, and the z scores
   mutate(
     change   = `estimate_2019-2023` - `estimate_2014-2018`,
     se_1     = `moe_2014-2018` / 1.645,

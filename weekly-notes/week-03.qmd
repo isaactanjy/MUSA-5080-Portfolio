@@ -239,9 +239,9 @@ county_data %>%
 $$\text{poverty rate} = \frac{\text{number in poverty}\pm moe}{\text{total population} \pm moe}$$
 
 ``` r
-moe.sum() # adding esitmates together
-moe.prop() # one estimate as a share of another
-moe.ratio() # two completely different calculations. eg. ratio of people in poverty / household income. One is NOT a subset of the other
+moe_sum() # adding estimates together
+moe_prop() # one estimate as a share of another
+moe_ratio() # two completely different calculations. eg. ratio of people in poverty / household income. One is NOT a subset of the other
 ```
 
 ### Looking back at the ACS
@@ -256,16 +256,15 @@ moe.ratio() # two completely different calculations. eg. ratio of people in pove
     2.  2019 - 2023: \$62,000 with a MOE of 11,000
 2.  We need to get into the maths of the *Standard Error of Difference*
 
-$$SE_{diff} = \sqrt{{SE_1}^2 + {SE_2}^2}$$
-$$Z = (\text{est}_1 - \text{est}_2)$$
+$$SE_{diff} = \sqrt{{SE_1}^2 + {SE_2}^2}$$ $$Z = (\text{est}_1 - \text{est}_2)$$
 
 3.  In this case, when we fill in the numbers:
 
-$$SE_{diff} = \sqrt{{\frac{8000}{1.645}}^2 + {\frac{11000}{1.645}}^2}$$
+$$SE_{diff} = \sqrt{({\frac{8000}{1.645})}^2 + ({\frac{11000}{1.645})}^2}$$
 
 ## Homework
 
-::: {.callout-tip}
+::: callout-tip
 Note on homework: Due in two weeks. Make sure you upload the link on canvas and follow the code given in the lecture. Work on making nice looking outputs.
 :::
 
